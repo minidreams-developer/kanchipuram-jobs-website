@@ -29,7 +29,7 @@ export default function Hero() {
           Discover meaningful opportunities with the people and companies
           building our community.
         </p>
-        <div className="flex max-w-full flex-wrap items-center gap-4 sm:gap-7">
+        {/* <div className="flex max-w-full flex-wrap items-center gap-4 sm:gap-7">
           <a
             className="rounded bg-[#ac1e44] px-[18px] py-3.5 text-xs font-bold"
             href="#jobs"
@@ -47,13 +47,29 @@ export default function Hero() {
               className="ml-1 inline-block align-[-2px]"
             />
           </a>
-        </div>
+        </div> */}
         <div className="mt-8 flex max-w-full flex-wrap gap-3">
-          <a className="transition-transform hover:scale-105" href="#" aria-label="Download the Kanchipuram Jobs app on Google Play">
-            <Image src={playStoreButton} alt="Get it on Google Play" className="h-auto w-[min(158px,calc((100vw-3rem)/2))]" />
+          <a
+            className="transition-transform hover:scale-105"
+            href="#"
+            aria-label="Download the Kanchipuram Jobs app on Google Play"
+          >
+            <Image
+              src={playStoreButton}
+              alt="Get it on Google Play"
+              className="h-auto w-[min(158px,calc((100vw-3rem)/2))]"
+            />
           </a>
-          <a className="transition-transform hover:scale-105" href="#" aria-label="Download the Kanchipuram Jobs app on the App Store">
-            <Image src={appStoreButton} alt="Download on the App Store" className="h-auto w-[min(158px,calc((100vw-3rem)/2))]" />
+          <a
+            className="transition-transform hover:scale-105"
+            href="#"
+            aria-label="Download the Kanchipuram Jobs app on the App Store"
+          >
+            <Image
+              src={appStoreButton}
+              alt="Download on the App Store"
+              className="h-auto w-[min(158px,calc((100vw-3rem)/2))]"
+            />
           </a>
         </div>
       </div>
