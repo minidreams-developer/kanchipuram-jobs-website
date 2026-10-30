@@ -116,7 +116,7 @@ export default function Navbar() {
           href={sectionLink("jobs")}
         >
           <span className="inline-flex items-center gap-2">
-            Download A <FiArrowUpRight aria-hidden="true" />
+            Download App <FiArrowUpRight aria-hidden="true" />
           </span>
         </a>
         <button
