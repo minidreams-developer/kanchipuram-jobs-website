@@ -8,12 +8,33 @@ import image1 from "@/app/assets/HowtoWorkimages/image1.png";
 import image4 from "@/app/assets/HowtoWorkimages/image4.png";
 import image5 from "@/app/assets/HowtoWorkimages/image5.png";
 
-const steps: { title: string; description: string; image: StaticImageData }[] = [
-  { title: "Choose your path", description: "Select Job Seeker to find work or Recruiter to build your team.", image: image1 },
-  { title: "Job seekers find and apply", description: "Search verified local jobs, review the details, and apply from your profile.", image: image },
-  { title: "Recruiters post and review", description: "Publish openings, discover relevant candidates, and manage applications in one place.", image: image4 },
-  { title: "Keep everything on track", description: "Job seekers follow application updates while recruiters move the right candidates forward.", image: image5 },
-];
+const steps: { title: string; description: string; image: StaticImageData }[] =
+  [
+    {
+      title: "Choose your path",
+      description:
+        "Select Job Seeker to find work or Recruiter to build your team.",
+      image: image1,
+    },
+    {
+      title: "Job seekers find and apply",
+      description:
+        "Search verified local jobs, review the details, and apply from your profile.",
+      image: image,
+    },
+    {
+      title: "Recruiters post and review",
+      description:
+        "Publish openings, discover relevant candidates, and manage applications in one place.",
+      image: image4,
+    },
+    {
+      title: "Keep everything on track",
+      description:
+        "Job seekers follow application updates while recruiters move the right candidates forward.",
+      image: image5,
+    },
+  ];
 
 export function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
@@ -28,7 +49,10 @@ export function HowItWorks() {
   }, [activeStep]); // restart the timer when the user clicks a step
 
   return (
-    <section className="border-t border-[#dfe2e0] bg-[#f7f8f7] py-24 sm:py-32" id="how-it-works">
+    <section
+      className="border-t border-[#dfe2e0] bg-[#f7f8f7] py-24 sm:py-32"
+      id="how-it-works"
+    >
       <div className="mx-auto grid w-[calc(100%-2rem)] max-w-[1200px] grid-cols-1 items-center gap-12 md:w-[calc(100%-4.5rem)] md:grid-cols-[minmax(0,522px)_minmax(0,1fr)] md:gap-16 xl:gap-[232px]">
         {/* Card */}
         <motion.div
@@ -46,7 +70,10 @@ export function HowItWorks() {
             aria-hidden="true"
             className="object-cover object-center opacity-70"
           />
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-br from-black/75 via-black/45 to-[#ac1e44]/60" />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-br from-black/75 via-black/45 to-[#ac1e44]/60"
+          />
           {/* Keep the phone artwork clear; the brand colour sits behind it as a soft glow. */}
           <div
             aria-hidden="true"
@@ -58,23 +85,55 @@ export function HowItWorks() {
           />
 
           {/* Phone: centered, padded, never cropped */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeStep}
-              initial={{ opacity: 0, y: 22, scale: 0.94, rotate: 2 }}
-              animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
-              exit={{ opacity: 0, y: -18, scale: 0.95, rotate: -2 }}
-              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              className="relative z-10 h-[88%] w-auto max-w-[85%]"
-            >
-              <Image
-                className="h-full w-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
-                src={active.image}
-                alt={`${active.title} preview`}
-                priority={activeStep === 0}
-              />
-            </motion.div>
-          </AnimatePresence>
+          <div className="absolute inset-0 z-10 flex items-center justify-center px-4 pt-5 pb-20 sm:px-8 sm:pt-6 sm:pb-24">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeStep}
+                initial={{ opacity: 0, y: 22, scale: 0.94, rotate: 2 }}
+                animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+                exit={{ opacity: 0, y: -18, scale: 0.95, rotate: -2 }}
+                transition={{
+                  duration: 0.55,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="flex h-full w-full items-center justify-center"
+              >
+                <Image
+                  src={active.image}
+                  alt={`${active.title} preview`}
+                  width={active.image.width}
+                  height={active.image.height}
+                  priority={activeStep === 0}
+                  className="max-h-full max-w-full scale-115 object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Navigation dots - separate from image */}
+          <div
+            aria-label="How it works slides"
+            className="absolute bottom-7 left-1/2 z-30 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-black/40 px-3 py-2 backdrop-blur-sm"
+          >
+            {steps.map((step, index) => (
+              <button
+                key={step.title}
+                type="button"
+                onClick={() => setActiveStep(index)}
+                aria-label={`Show step ${index + 1}: ${step.title}`}
+                aria-current={index === activeStep ? "true" : undefined}
+                className="flex h-3 items-center justify-center"
+              >
+                <motion.span
+                  animate={{
+                    width: index === activeStep ? 20 : 6,
+                    opacity: index === activeStep ? 1 : 0.45,
+                  }}
+                  className="block h-1.5 rounded-full bg-white"
+                />
+              </button>
+            ))}
+          </div>
           <motion.div
             aria-hidden="true"
             className="absolute bottom-7 left-1/2 z-20 flex -translate-x-1/2 gap-1.5 rounded-full bg-black/30 px-3 py-2 backdrop-blur-sm"
@@ -82,7 +141,10 @@ export function HowItWorks() {
             {steps.map((step, index) => (
               <motion.span
                 key={step.title}
-                animate={{ width: index === activeStep ? 20 : 6, opacity: index === activeStep ? 1 : 0.45 }}
+                animate={{
+                  width: index === activeStep ? 20 : 6,
+                  opacity: index === activeStep ? 1 : 0.45,
+                }}
                 className="h-1.5 rounded-full bg-white"
               />
             ))}
@@ -95,9 +157,12 @@ export function HowItWorks() {
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.8, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="mb-7 text-4xl leading-none tracking-[-1.5px] text-[#151515]">How it works</h2>
+          <h2 className="mb-7 text-4xl leading-none tracking-[-1.5px] text-[#151515]">
+            How it works
+          </h2>
           <p className="mb-10 max-w-[520px] text-sm leading-[1.45] text-[#765361]">
-            One simple platform for people looking for their next opportunity and businesses looking for the right people.
+            One simple platform for people looking for their next opportunity
+            and businesses looking for the right people.
           </p>
           <div className="border-t border-[#c9d8cc]">
             {steps.map((step, index) => {
@@ -118,8 +183,12 @@ export function HowItWorks() {
                   >
                     {index + 1}
                   </small>
-                  <span className={`transition-colors duration-300 ${isActive ? "text-[#765361]" : "text-[#a3a9a5]"}`}>
-                    <b className={`text-lg transition-colors duration-300 ${isActive ? "text-[#151515]" : "text-[#8a8f8c]"}`}>
+                  <span
+                    className={`transition-colors duration-300 ${isActive ? "text-[#765361]" : "text-[#a3a9a5]"}`}
+                  >
+                    <b
+                      className={`text-lg transition-colors duration-300 ${isActive ? "text-[#151515]" : "text-[#8a8f8c]"}`}
+                    >
                       {step.title}
                     </b>
                     <br />

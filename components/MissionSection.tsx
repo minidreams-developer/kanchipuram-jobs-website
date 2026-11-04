@@ -46,7 +46,7 @@ export default function MissionSection() {
           <p className="mt-7 max-w-[520px] text-[15px] leading-8 text-[#68636a]">We make meaningful employment easier to discover by bringing verified recruiters and local talent together through a simple, transparent platform.</p>
           <p className="mt-5 max-w-[520px] text-[15px] leading-8 text-[#68636a]">From finding the right opportunity to tracking an application, Kanchipuram Jobs helps people take their next career step with confidence.</p>
         </motion.div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {missionStats.map(([Icon, value, label, suffix], index) => (
             <motion.article key={label} initial={{ opacity: 0, x: 45 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6, delay: index * 0.1 }} className="flex min-h-[205px] flex-col items-center justify-center rounded-[22px] bg-[#fafbfa] px-5 py-7 text-center shadow-[0_8px_24px_rgba(36,21,26,0.04)]">
               <div className="mb-5 grid h-20 w-20 place-items-center rounded-full bg-[#f9e5eb] text-[40px] text-[#ac1e44]"><Icon aria-hidden="true" /></div>

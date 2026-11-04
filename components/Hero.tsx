@@ -7,7 +7,11 @@ import { FaApple, FaGooglePlay } from "react-icons/fa6";
 export default function Hero() {
   return (
     <section
-      className="relative min-h-[680px] overflow-hidden bg-cover bg-center text-white"
+      className="
+    relative min-h-[680px] overflow-hidden bg-cover bg-center text-white
+    max-md:bg-[length:auto_100%]
+    max-md:bg-[position:25%_center]
+  "
       id="top"
       style={{ backgroundImage: "url('/kanchipuram-jobs-hero.png')" }}
     >

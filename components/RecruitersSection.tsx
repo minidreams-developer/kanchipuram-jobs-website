@@ -63,7 +63,7 @@ export default function RecruitersSection() {
           </p>
           <div className="grid gap-4 sm:grid-cols-2">
             {benefits.map(([Icon, title, description], index) => (
-              <MotionReveal key={title} delay={index * 0.50}>
+              <MotionReveal key={title} delay={index * 0.5}>
                 <article className="rounded-2xl bg-[#fffafb] p-5 shadow-[0_8px_24px_rgba(36,21,26,0.05)]">
                   <div className="mb-4 grid h-10 w-10 place-items-center rounded-xl bg-[#f9e5eb] text-xl text-[#ac1e44]">
                     <Icon aria-hidden="true" />
@@ -85,7 +85,8 @@ export default function RecruitersSection() {
         </MotionReveal>
         <MotionReveal delay={0.12}>
           <MotionReveal>
-            <div className="gentle-float relative mx-auto h-[400px] w-full max-w-[360px] overflow-hidden p-5 sm:h-[500px]">
+            <div className="gentle-float relative mx-auto h-[450px] w-full max-w-[350px] overflow-hidden p-2 sm:h-[480px] sm:max-w-[400px] lg:h-[540px] lg:max-w-[440px]">
+              {" "}
               <AutoImageCarousel
                 images={[
                   recruiterImage,
@@ -93,7 +94,6 @@ export default function RecruitersSection() {
                   recruiterImage3,
                   recruiterImage4,
                   recruiterImage5,
-                  recruiterImage6,
                 ]}
                 alt="Recruiter using Kanchipuram Jobs"
               />

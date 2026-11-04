@@ -35,12 +35,14 @@ export function Stats() {
           ["4.9", "Community rating", "/5"],
           ["100", "Local opportunities", "%"],
         ].map(([n, l, s]) => (
-          <div key={l}>
+          <div key={l} className="text-center">
             <strong className="text-[27px]">
               {n}
               <span className="text-[17px] text-[#f3c3d0]">{s}</span>
             </strong>
-            <small className="mt-1 block text-[10px] text-[#f1c7d3]">{l}</small>
+            <small className="mt-1 block text-[10px] text-[#f1c7d3]">
+              {l}
+            </small>
           </div>
         ))}
       </div>

@@ -26,7 +26,7 @@ export default function AboutPlatform({ aboutUrl }: { aboutUrl: string }) {
       id="about"
     >
       <div className="mx-auto grid max-w-[1160px] items-center gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-24">
-        <div className="relative grid grid-cols-2 items-center gap-5 lg:h-[460px]">
+        <div className="relative grid grid-cols-2 items-stretch gap-3 sm:gap-5 lg:h-[460px]">
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -37,17 +37,23 @@ export default function AboutPlatform({ aboutUrl }: { aboutUrl: string }) {
           >
             <span className="absolute -right-12 -top-12 h-36 w-36 rounded-full border border-white/20" />
             <span className="absolute -bottom-16 -left-10 h-44 w-44 rounded-full border border-white/15" />
-            <div>
+            <div className="px-4 sm:px-0">
               <motion.div
                 animate={{ rotate: [0, -7, 7, 0], scale: [1, 1.06, 1] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
                 className="mx-auto mb-5 grid h-20 w-20 place-items-center rounded-full border-2 border-[#f3c3d0] text-4xl font-bold text-[#f3c3d0]"
               >
                 <FiBriefcase aria-hidden="true" />
               </motion.div>
-              <strong className="block text-3xl tracking-tight">
+
+              <strong className="block text-2xl sm:text-3xl tracking-tight">
                 Kanchipuram
               </strong>
+
               <span className="mt-1 block text-[10px] font-bold tracking-[3px] text-[#f3c3d0]">
                 JOBS
               </span>
@@ -57,28 +63,60 @@ export default function AboutPlatform({ aboutUrl }: { aboutUrl: string }) {
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.35 }}
-            transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex min-h-[330px] h-full items-center justify-center overflow-visible sm:min-h-[410px]"
+            transition={{
+              duration: 0.7,
+              delay: 0.12,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="relative flex h-[330px] min-w-0 flex-col items-center justify-center overflow-visible sm:h-[410px] lg:h-[460px]"
           >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={imageIndex}
-                initial={{ opacity: 0, y: 20, scale: 0.96, rotate: 2 }}
-                animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
-                exit={{ opacity: 0, y: -20, scale: 0.96, rotate: -2 }}
-                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                className="h-full w-full"
-              >
-                <Image
-                  src={jobSeekerImages[imageIndex]}
-                  alt="Professionals discovering opportunities in Kanchipuram"
-                  className="h-full w-full scale-130 object-contain"
-                />
-              </motion.div>
-            </AnimatePresence>
-            <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-1.5 rounded-full bg-white/80 px-3 py-2 shadow-sm backdrop-blur-sm" aria-label={`Showing image ${imageIndex + 1} of ${jobSeekerImages.length}`}>
+            {/* Image area */}
+            <div className="relative flex min-h-0 w-full flex-1 items-center justify-center px-0">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={imageIndex}
+                  initial={{ opacity: 0, y: 20, scale: 0.96, rotate: 2 }}
+                  animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+                  exit={{ opacity: 0, y: -20, scale: 0.96, rotate: -2 }}
+                  transition={{
+                    duration: 0.65,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="flex h-full w-full items-center justify-center"
+                >
+                  <Image
+                    src={jobSeekerImages[imageIndex]}
+                    alt="Professionals discovering opportunities in Kanchipuram"
+                    width={jobSeekerImages[imageIndex].width}
+                    height={jobSeekerImages[imageIndex].height}
+                    priority={imageIndex === 0}
+                    className="h-full w-full scale-110 object-contain object-center"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Navigation dots below image */}
+            <div
+              className="flex h-10 shrink-0 items-center justify-center gap-1.5"
+              aria-label={`Showing image ${imageIndex + 1} of ${jobSeekerImages.length}`}
+            >
               {jobSeekerImages.map((_, index) => (
-                <motion.span key={index} animate={{ width: index === imageIndex ? 18 : 6, opacity: index === imageIndex ? 1 : 0.35 }} className="h-1.5 rounded-full bg-[#AC1E44]" />
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => setImageIndex(index)}
+                  aria-label={`Show image ${index + 1}`}
+                  className="flex h-5 items-center justify-center px-0.5"
+                >
+                  <motion.span
+                    animate={{
+                      width: index === imageIndex ? 22 : 7,
+                      opacity: index === imageIndex ? 1 : 0.35,
+                    }}
+                    className="block h-1.5 rounded-full bg-[#AC1E44]"
+                  />
+                </button>
               ))}
             </div>
           </motion.div>
@@ -110,7 +148,8 @@ export default function AboutPlatform({ aboutUrl }: { aboutUrl: string }) {
             href={aboutUrl}
             className="mt-8 inline-flex rounded bg-[#AC1E44] px-5 py-3.5 text-xs font-bold text-white transition hover:bg-[#8f1838]"
           >
-            Learn more about us <FiArrowUpRight aria-hidden="true" className="ml-1" />
+            Learn more about us{" "}
+            <FiArrowUpRight aria-hidden="true" className="ml-1" />
           </a>
         </div>
       </div>
