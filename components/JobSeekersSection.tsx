@@ -11,8 +11,8 @@ import MotionReveal from "./MotionReveal";
 import jobSeekerImage from "../app/assets/JobSeekers/image1.png";
 import jobSeekerImage2 from "../app/assets/JobSeekers/image2.png";
 import jobSeekerImage3 from "../app/assets/JobSeekers/image3.png";
-import jobSeekerImage4 from "../app/assets/JobSeekers/image4.png";
 import jobSeekerImage5 from "../app/assets/JobSeekers/image5.png";
+import jobSeekerImage6 from "../app/assets/JobSeekers/image 6.png"
 import AutoImageCarousel from "./AutoImageCarousel";
 
 const benefits = [
@@ -52,10 +52,9 @@ export default function JobSeekersSection() {
             <AutoImageCarousel
               images={[
                 jobSeekerImage,
-                jobSeekerImage2,
                 jobSeekerImage3,
-                jobSeekerImage4,
                 jobSeekerImage5,
+                jobSeekerImage6
               ]}
               alt="Job seeker using Kanchipuram Jobs"
             />

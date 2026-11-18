@@ -9,11 +9,12 @@ export default function Hero() {
     <section
       className="
     relative min-h-[680px] overflow-hidden bg-cover bg-center text-white
-    max-md:bg-[length:auto_100%]
-    max-md:bg-[position:25%_center]
+    bg-[image:url('/kanchipuram-jobs-hero.png')]
+    max-md:bg-[image:url('/kanchipuram-job-mobile.jpg')]
+    max-md:bg-cover
+    max-md:bg-center
   "
       id="top"
-      style={{ backgroundImage: "url('/kanchipuram-jobs-hero.png')" }}
     >
       <div className="hero-gradient-animate absolute inset-0 bg-gradient-to-r from-black/80 via-[#180a0f]/50 to-[#ac1e44]/25" />
       <div className="relative z-10 mx-auto flex min-h-[680px] w-[calc(100%-2rem)] max-w-[1160px] flex-col items-start justify-center sm:w-[calc(100%-4.5rem)]">

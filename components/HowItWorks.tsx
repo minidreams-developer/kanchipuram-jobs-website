@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import image from "@/app/assets/HowtoWorkimages/image.png";
 import image1 from "@/app/assets/HowtoWorkimages/image1.png";
 import image4 from "@/app/assets/HowtoWorkimages/image4.png";
-import image5 from "@/app/assets/HowtoWorkimages/image5.png";
+import image5 from "@/app/assets/Recutier/image6.png";
 
 const steps: { title: string; description: string; image: StaticImageData }[] =
   [
@@ -85,26 +85,22 @@ export function HowItWorks() {
           />
 
           {/* Phone: centered, padded, never cropped */}
-          <div className="absolute inset-0 z-10 flex items-center justify-center px-4 pt-5 pb-20 sm:px-8 sm:pt-6 sm:pb-24">
-            <AnimatePresence mode="wait">
+          <div className="absolute inset-0 z-10 flex items-center justify-center px-2 pt-2 pb-10 sm:px-8 sm:pt-6 sm:pb-24">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={activeStep}
-                initial={{ opacity: 0, y: 22, scale: 0.94, rotate: 2 }}
-                animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
-                exit={{ opacity: 0, y: -18, scale: 0.95, rotate: -2 }}
-                transition={{
-                  duration: 0.55,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
+                initial={{ opacity: 0, y: 20, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.96 }}
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
                 className="flex h-full w-full items-center justify-center"
               >
                 <Image
-                  src={active.image}
-                  alt={`${active.title} preview`}
-                  width={active.image.width}
-                  height={active.image.height}
-                  priority={activeStep === 0}
-                  className="max-h-full max-w-full scale-115 object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
+                  src={steps[activeStep].image}
+                  alt={steps[activeStep].title}
+                  width={steps[activeStep].image.width}
+                  height={steps[activeStep].image.height}
+                 className="block h-auto w-auto max-h-full max-w-full scale-125 object-contain object-center"
                 />
               </motion.div>
             </AnimatePresence>

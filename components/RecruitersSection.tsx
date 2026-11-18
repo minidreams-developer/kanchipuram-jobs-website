@@ -94,6 +94,7 @@ export default function RecruitersSection() {
                   recruiterImage3,
                   recruiterImage4,
                   recruiterImage5,
+                  recruiterImage6,
                 ]}
                 alt="Recruiter using Kanchipuram Jobs"
               />

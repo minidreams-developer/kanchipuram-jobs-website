@@ -7,8 +7,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import jobImage from "../app/assets/HowtoWorkimages/image2.png";
 import jobImageAlt from "../app/assets/HowtoWorkimages/image4.png";
 import jobImageDetails from "../app/assets/HowtoWorkimages/image3.png";
+import jobApplication from "../app/assets/JobSeekers/image5.png";
 
-const jobSeekerImages = [jobImage, jobImageAlt, jobImageDetails];
+const jobSeekerImages = [jobImageAlt, jobImageDetails, jobApplication];
 
 export default function AboutPlatform({ aboutUrl }: { aboutUrl: string }) {
   const [imageIndex, setImageIndex] = useState(0);
@@ -72,24 +73,20 @@ export default function AboutPlatform({ aboutUrl }: { aboutUrl: string }) {
           >
             {/* Image area */}
             <div className="relative flex min-h-0 w-full flex-1 items-center justify-center px-0">
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={imageIndex}
                   initial={{ opacity: 0, y: 20, scale: 0.96, rotate: 2 }}
                   animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
                   exit={{ opacity: 0, y: -20, scale: 0.96, rotate: -2 }}
-                  transition={{
-                    duration: 0.65,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="flex h-full w-full items-center justify-center"
+                  transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-0 flex items-center justify-center"
                 >
                   <Image
                     src={jobSeekerImages[imageIndex]}
                     alt="Professionals discovering opportunities in Kanchipuram"
                     width={jobSeekerImages[imageIndex].width}
                     height={jobSeekerImages[imageIndex].height}
-                    priority={imageIndex === 0}
                     className="h-full w-full scale-110 object-contain object-center"
                   />
                 </motion.div>
