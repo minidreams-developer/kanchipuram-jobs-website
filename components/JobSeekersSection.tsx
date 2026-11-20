@@ -62,7 +62,7 @@ export default function JobSeekersSection() {
         </MotionReveal>
 
         <MotionReveal delay={0.12}>
-          <p className="mb-5 text-[10px] font-extrabold tracking-[2px] text-[#9d536c]">
+          <p className="mb-5 text-[20px] font-extrabold tracking-[2px] text-[#9d536c]">
             FOR JOB SEEKERS
           </p>
           <h2

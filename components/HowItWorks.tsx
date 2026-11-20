@@ -64,7 +64,7 @@ export function HowItWorks() {
         >
           {/* Reuse the hero artwork as the section background, behind the phone preview. */}
           <Image
-            src="/kanchipuram-jobs-hero.png"
+            src="/Kanchipuram_How-It-Works.png"
             alt=""
             fill
             aria-hidden="true"

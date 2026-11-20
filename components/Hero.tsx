@@ -1,79 +1,103 @@
 import Image from "next/image";
-import { FiArrowUpRight, FiStar } from "react-icons/fi";
+import { FiStar } from "react-icons/fi";
 import appStoreButton from "../app/assets/Storebutton/appstoreBtn-CXHM3aaZ.svg";
 import playStoreButton from "../app/assets/Storebutton/playstoreBtn-C0Szw4ml.svg";
-import { FaApple, FaGooglePlay } from "react-icons/fa6";
 
-export default function Hero() {
+export default function HeroSection() {
   return (
     <section
-      className="
-    relative min-h-[680px] overflow-hidden bg-cover bg-center text-white
-    bg-[image:url('/kanchipuram-jobs-hero.png')]
-    max-md:bg-[image:url('/kanchipuram-job-mobile.jpg')]
-    max-md:bg-cover
-    max-md:bg-center
-  "
       id="top"
+      className="relative isolate min-h-[720px] overflow-hidden bg-[#26151b] text-white"
+      style={{
+        backgroundImage: "url('/kanchipuram-jobs-heroimage.png')",
+        backgroundSize: "100% 100%",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
-      <div className="hero-gradient-animate absolute inset-0 bg-gradient-to-r from-black/80 via-[#180a0f]/50 to-[#ac1e44]/25" />
-      <div className="relative z-10 mx-auto flex min-h-[680px] w-[calc(100%-2rem)] max-w-[1160px] flex-col items-start justify-center sm:w-[calc(100%-4.5rem)]">
-        <p className="mb-[22px] text-[10px] font-extrabold tracking-[2px] text-[#f3c3d0]">
-          <FiStar
-            aria-hidden="true"
-            className="mr-1 inline-block align-[-2px]"
-          />
-          BUILT FOR KANCHIPURAM
-        </p>
-        <h1 className="text-[clamp(44px,5.2vw,72px)] font-bold leading-[.98] tracking-[-3px]">
+      {/* Background overlay */}
+      <div
+        className="
+    absolute inset-0 z-0
+    bg-gradient-to-r
+    from-[#190b12]/45
+    via-[#190b12]/15
+    to-transparent
+  "
+      />
+
+      {/* Bottom overlay */}
+      <div
+        className="absolute inset-x-0 bottom-0 z-0 h-40
+        bg-gradient-to-t from-black/50 to-transparent"
+      />
+
+      {/* Content */}
+      <div
+        className="relative z-10 mx-auto flex w-full
+        max-w-[1320px] flex-col justify-center
+        px-6 pb-16 pt-32 sm:px-12 lg:px-16"
+      >
+        {/* Built for Kanchipuram - Blur to Focus Animation */}
+        <div className="hero-focus-badge mb-8">
+          <div className="hero-focus-inner">
+            <FiStar className="hero-focus-star" />
+
+            <span className="hero-focus-text">BUILT FOR KANCHIPURAM</span>
+          </div>
+        </div>
+
+        {/* Main heading */}
+        <h1
+          className="hero-heading max-w-[850px]
+          text-[clamp(3.2rem,6.5vw,6rem)]
+          font-extrabold leading-[1.02]
+          tracking-[-3px]"
+        >
           Work that moves
-          <br />
-          <em className="font-normal text-[#f3c3d0]">you forward.</em>
+          <span className="hero-highlight block italic">you forward.</span>
         </h1>
-        <p className="my-7 max-w-[410px] text-[15px] leading-[1.7] text-[#f9dfe6]">
+
+        {/* Animated underline */}
+        <div className="hero-line mt-5" />
+
+        {/* Description */}
+        <p
+          className="hero-description mt-7 max-w-[540px]
+          text-base font-medium leading-[1.8]
+          text-white/95 sm:text-lg"
+        >
           Discover meaningful opportunities with the people and companies
-          building our community.
+          building our community. Find your next opportunity and grow your
+          career right here in Kanchipuram.
         </p>
-        {/* <div className="flex max-w-full flex-wrap items-center gap-4 sm:gap-7">
+
+        {/* App store buttons */}
+        <div
+          className="hero-store-buttons mt-9 flex
+          flex-wrap items-center gap-4 sm:gap-5"
+        >
           <a
-            className="rounded bg-[#ac1e44] px-[18px] py-3.5 text-xs font-bold"
-            href="#jobs"
-          >
-            Find your next job{" "}
-            <FiArrowUpRight
-              aria-hidden="true"
-              className="ml-1 inline-block align-[-2px]"
-            />
-          </a>
-          <a className="text-xs font-bold" href="#for-employers">
-            I&apos;m hiring{" "}
-            <FiArrowUpRight
-              aria-hidden="true"
-              className="ml-1 inline-block align-[-2px]"
-            />
-          </a>
-        </div> */}
-        <div className="mt-8 flex max-w-full flex-wrap gap-3">
-          <a
-            className="transition-transform hover:scale-105"
             href="#"
-            aria-label="Download the Kanchipuram Jobs app on Google Play"
+            aria-label="Get it on Google Play"
+            className="hero-store-link"
           >
             <Image
               src={playStoreButton}
               alt="Get it on Google Play"
-              className="h-auto w-[min(158px,calc((100vw-3rem)/2))]"
+              className="h-auto w-[155px] sm:w-[180px]"
             />
           </a>
+
           <a
-            className="transition-transform hover:scale-105"
             href="#"
-            aria-label="Download the Kanchipuram Jobs app on the App Store"
+            aria-label="Download on the App Store"
+            className="hero-store-link"
           >
             <Image
               src={appStoreButton}
               alt="Download on the App Store"
-              className="h-auto w-[min(158px,calc((100vw-3rem)/2))]"
+              className="h-auto w-[155px] sm:w-[180px]"
             />
           </a>
         </div>

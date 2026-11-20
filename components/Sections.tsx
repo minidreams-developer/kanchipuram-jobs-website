@@ -1,20 +1,55 @@
+
 "use client";
 
-import { FiArrowUpRight, FiBookOpen, FiHeart, FiHome, FiTrendingUp } from "react-icons/fi";
-import { motion } from "framer-motion";
 import Image from "next/image";
-import recruiterImage from "../app/assets/HowtoWorkimages/image1.png";
+import { motion } from "framer-motion";
+import {
+  FiArrowUpRight,
+  FiBookOpen,
+  FiHeart,
+  FiHome,
+  FiTrendingUp,
+} from "react-icons/fi";
 
-/* categories moved to JobsSection.tsx */
+import recruiterImage from "../app/assets/HowtoWorkimages/image1.png";
+import image1 from "@/app/assets/jobsection/image1.jpg";
+import image2 from "@/app/assets/jobsection/image2.jpg";
+import image3 from "@/app/assets/jobsection/image3.jpg";
+import image4 from "@/app/assets/jobsection/image4.jpg";
+
+/* Shared container styles */
+const wrap =
+  "mx-auto w-[calc(100%-2rem)] max-w-[1160px] sm:w-[calc(100%-4.5rem)]";
+
+/* Shared heading styles */
+const heading =
+  "text-4xl leading-tight tracking-[-2px] text-[#24151a] sm:text-5xl sm:leading-none sm:tracking-[-3px]";
+
+/* Job categories */
 const categories = [
-  "Construction & Architecture",
-  "Education & Training",
-  "Sales & Marketing",
-  "Healthcare & Wellness",
-  "Retail & Customer Service",
-  "Engineering & Technology",
+  {
+    title: "Construction & Architecture",
+    icon: FiHome,
+    image: image1,
+  },
+  {
+    title: "Education & Training",
+    icon: FiBookOpen,
+    image: image2,
+  },
+  {
+    title: "Sales & Marketing",
+    icon: FiTrendingUp,
+    image: image3,
+  },
+  {
+    title: "Healthcare & Wellness",
+    icon: FiHeart,
+    image: image4,
+  },
 ];
-const categoryIcons = [FiHome, FiBookOpen, FiTrendingUp, FiHeart];
+
+/* FAQ questions */
 const faqs = [
   "What is Kanchipuram Jobs?",
   "How do I apply for a job?",
@@ -22,26 +57,170 @@ const faqs = [
   "How are recruiters verified?",
   "Can recruiters post jobs immediately?",
 ];
-const wrap =
-  "mx-auto w-[calc(100%-2rem)] max-w-[1160px] sm:w-[calc(100%-4.5rem)]";
-const heading = "text-5xl leading-none tracking-[-3px] text-[#24151a]";
-export function Stats() {
+
+/* Reusable animation settings */
+const revealAnimation = {
+  initial: {
+    opacity: 0,
+    y: 35,
+  },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+  },
+  viewport: {
+    once: true,
+    amount: 0.15,
+  },
+  transition: {
+    duration: 0.55,
+    ease: [0.22, 1, 0.36, 1] as const,
+  },
+};
+
+/* --------------------------------------------------
+   JOBS SECTION
+-------------------------------------------------- */
+
+export function JobsSectionStory() {
   return (
-    <section className="bg-[#ac1e44] py-7 text-white">
-      <div className={`${wrap} grid grid-cols-2 gap-6 md:grid-cols-4`}>
-        {[
-          ["1,200", "Jobs posted", "+"],
-          ["850", "Active employers", "+"],
-          ["4.9", "Community rating", "/5"],
-          ["100", "Local opportunities", "%"],
-        ].map(([n, l, s]) => (
-          <div key={l} className="text-center">
-            <strong className="text-[27px]">
-              {n}
-              <span className="text-[17px] text-[#f3c3d0]">{s}</span>
+    <section className={`${wrap} py-20 sm:py-24`} id="jobs">
+      {/* Section Heading */}
+      <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+        <div>
+          <p
+  className="mb-5 font-extrabold tracking-[2px] text-[#9d536c]"
+  style={{ fontSize: "20px" }}
+>
+  OPPORTUNITIES, YOUR WAY
+</p>
+
+          <h2 className={heading}>
+            Find work that fits
+            <br />
+            <em className="font-normal text-[#ac1e44]">
+              your life.
+            </em>
+          </h2>
+
+          <p className="my-6 max-w-[430px] text-[15px] leading-7 text-[#765361]">
+            Search by category, location, salary, experience, and job type
+            to discover the opportunity made for you.
+          </p>
+        </div>
+
+        <a
+          className="inline-flex items-center gap-2 rounded-lg border border-[#d89bad] px-5 py-3.5 text-sm font-bold text-[#ac1e44] transition-all hover:bg-[#ac1e44] hover:text-white"
+          href="#jobseeker"
+        >
+          Browse all jobs
+          <FiArrowUpRight aria-hidden="true" />
+        </a>
+      </div>
+
+      {/* Category Cards */}
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        
+{categories.map((category, index) => {
+  const Icon = category.icon;
+
+  return (
+    <motion.a
+      key={category.title}
+      href="#jobseeker"
+      {...revealAnimation}
+      transition={{
+        ...revealAnimation.transition,
+        delay: index * 0.1,
+      }}
+      whileHover={{
+        y: -8,
+        scale: 1.02,
+      }}
+      className="group relative isolate flex min-h-[315px] flex-col overflow-hidden rounded-[28px] border border-[#ead1d9] bg-white p-6 shadow-[0_10px_28px_rgba(108,35,58,0.06)] transition-shadow duration-500 hover:shadow-[0_18px_36px_rgba(108,35,58,0.15)]"
+    >
+      {/* Full Card Background Image */}
+      <div
+        className="absolute inset-0 -z-20 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+        style={{
+          backgroundImage: `url("${category.image.src}")`,
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Light overlay to keep text readable */}
+      <div
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-white/95 via-white/65 to-white/25"
+        aria-hidden="true"
+      />
+
+      {/* Subtle pink tint */}
+      <div
+        className="absolute inset-0 -z-10 bg-[#f9dce6]/15"
+        aria-hidden="true"
+      />
+
+      {/* Icon and Arrow */}
+      <div className="flex items-center justify-between">
+        <span className="grid h-[60px] w-[60px] place-items-center rounded-2xl bg-white/90 text-2xl text-[#ac1e44] shadow-sm backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+          <Icon aria-hidden="true" />
+        </span>
+
+        <span className="grid h-[45px] w-[45px] place-items-center rounded-full bg-[#ac1e44] text-xl text-white shadow-md transition-transform duration-300 group-hover:rotate-45">
+          <FiArrowUpRight aria-hidden="true" />
+        </span>
+      </div>
+
+      {/* Category Information */}
+      <div className="mt-auto">
+        <div className="mb-5 flex items-center justify-between text-[10px] font-extrabold tracking-[1.8px] text-[#ac1e44]">
+          <span>LOCAL OPPORTUNITY</span>
+          <span>0{index + 1}</span>
+        </div>
+
+        <h3 className="text-xl font-semibold leading-snug text-[#24151a]">
+          {category.title}
+        </h3>
+
+        <p className="mt-3 text-sm leading-6 text-[#765361]">
+          Find trusted local opportunities and take your next step.
+        </p>
+      </div>
+    </motion.a>
+  );
+})}
+
+      </div>
+    </section>
+  );
+}
+
+/* --------------------------------------------------
+   STATS SECTION
+-------------------------------------------------- */
+
+export function Stats() {
+  const statistics = [
+    ["1,200", "Jobs posted", "+"],
+    ["850", "Active employers", "+"],
+    ["4.9", "Community rating", "/5"],
+    ["100", "Local opportunities", "%"],
+  ];
+
+  return (
+    <section className="bg-[#ac1e44] py-8 text-white">
+      <div className={`${wrap} grid grid-cols-2 gap-7 md:grid-cols-4`}>
+        {statistics.map(([number, label, suffix]) => (
+          <div key={label} className="text-center">
+            <strong className="text-3xl font-bold sm:text-[32px]">
+              {number}
+              <span className="text-lg text-[#f3c3d0]">
+                {suffix}
+              </span>
             </strong>
-            <small className="mt-1 block text-[10px] text-[#f1c7d3]">
-              {l}
+
+            <small className="mt-1 block text-xs text-[#f1c7d3] sm:text-sm">
+              {label}
             </small>
           </div>
         ))}
@@ -49,220 +228,371 @@ export function Stats() {
     </section>
   );
 }
-export function JobsSection() {
-  return (
-    <section className={`${wrap} py-24`} id="jobs">
-      <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-        <div>
-          <p className="mb-5 text-[10px] font-extrabold tracking-[2px] text-[#9d536c]">
-            OPPORTUNITIES, YOUR WAY
-          </p>
-          <h2 className={heading}>
-            Find work that fits
-            <br />
-            <em className="font-normal text-[#ac1e44]">your life.</em>
-          </h2>
-          <p className="my-6 max-w-[410px] text-[15px] leading-7 text-[#765361]">
-            Search by category, location, salary, experience, and job type to
-            discover the opportunity made for you.
-          </p>
-        </div>
-        <a
-          className="rounded border border-[#d89bad] px-[18px] py-3.5 text-xs font-bold text-[#ac1e44]"
-          href="#for-employers"
-        >
-          Browse all jobs ↗
-        </a>
-      </div>
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        {categories.slice(0, 4).map((c, i) => {
-          const Icon = categoryIcons[i];
-          return (
-          <motion.a
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ y: -8, scale: 1.02 }}
-            className="group relative min-h-[220px] overflow-hidden rounded-2xl border border-[#ead1d9] bg-gradient-to-br from-white to-[#fff5f8] p-5 shadow-[0_10px_28px_rgba(108,35,58,0.06)] transition-shadow hover:shadow-[0_18px_36px_rgba(108,35,58,0.15)]"
-            href="#contact"
-            key={c}
-          >
-            <div className="flex items-start"><span className="grid h-11 w-11 place-items-center rounded-xl bg-[#f9e5eb] text-xl text-[#ac1e44] transition-transform group-hover:scale-110"><Icon aria-hidden="true" /></span></div>
-            <b className="float-right text-[#b26b82]">↗</b>
-            <h3 className="mt-[67px] text-base">{c}</h3>
-            <p className="mt-2 text-xs leading-5 text-[#896575]">
-              Find trusted local opportunities and take your next step.
-            </p>
-          </motion.a>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
+
+/* --------------------------------------------------
+   WHY SECTION
+-------------------------------------------------- */
+
 export function WhySection() {
+  const items = [
+    "Local opportunities",
+    "Trusted recruiters",
+    "Clear application tracking",
+    "Made for growth",
+  ];
+
   return (
-    <section className={`${wrap} py-24`}>
+    <section className={`${wrap} py-20 sm:py-24`}>
       <div className="mb-12 text-center">
-        <p className="mb-5 text-[10px] font-extrabold tracking-[2px] text-[#9d536c]">
+        <p className="mb-5 text-sm font-extrabold tracking-[2px] text-[#9d536c]">
           WHY KANCHIPURAM JOBS
         </p>
+
         <h2 className={heading}>
           Built around{" "}
-          <em className="font-normal text-[#ac1e44]">real people.</em>
+          <em className="font-normal text-[#ac1e44]">
+            real people.
+          </em>
         </h2>
-        <p className="mx-auto my-5 max-w-[410px] text-[15px] leading-7 text-[#765361]">
+
+        <p className="mx-auto my-5 max-w-[520px] text-[15px] leading-7 text-[#765361]">
           A local-first platform that brings job seekers and employers closer
           together.
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        {[
-          "Local opportunities",
-          "Trusted recruiters",
-          "Clear application tracking",
-          "Made for growth",
-        ].map((t, i) => (
-          <article
-            className="min-h-[190px] rounded-lg border border-[#ead1d9] bg-[#fffafb] p-6"
-            key={t}
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {items.map((item, index) => (
+          <motion.article
+            key={item}
+            {...revealAnimation}
+            transition={{
+              ...revealAnimation.transition,
+              delay: index * 0.1,
+            }}
+            className="min-h-[190px] rounded-2xl border border-[#ead1d9] bg-[#fffafb] p-6 transition-shadow hover:shadow-lg"
           >
-            <span className="text-[11px] text-[#ac1e44]">0{i + 1}</span>
-            <h3 className="mt-9 text-[17px]">{t}</h3>
-            <p className="mt-2 text-xs leading-6 text-[#896575]">
-              Find trusted local opportunities and build your next step with
+            <span className="text-sm font-bold text-[#ac1e44]">
+              0{index + 1}
+            </span>
+
+            <h3 className="mt-9 text-lg font-semibold text-[#24151a]">
+              {item}
+            </h3>
+
+            <p className="mt-2 text-sm leading-6 text-[#896575]">
+              Find trusted opportunities and build your next step with
               confidence.
             </p>
-          </article>
+          </motion.article>
         ))}
       </div>
     </section>
   );
 }
+
+/* --------------------------------------------------
+   EMPLOYER SECTION
+-------------------------------------------------- */
+
 export function EmployerSection() {
   return (
-    <section className="py-24">
+    <section className="py-20 sm:py-24" id="recruiter">
       <div
-        className={`${wrap} flex min-h-[380px] flex-col justify-between overflow-hidden rounded-lg bg-[#ac1e44] p-10 text-white md:flex-row md:p-16`}
+        className={`${wrap} flex min-h-[380px] flex-col justify-between overflow-hidden rounded-2xl bg-[#ac1e44] p-7 text-white sm:p-10 md:flex-row md:items-center md:p-16`}
       >
-        <div>
-          <p className="mb-5 text-[10px] font-extrabold tracking-[2px] text-[#f3c3d0]">
+        <div className="max-w-[570px]">
+          <p className="mb-5 text-sm font-extrabold tracking-[2px] text-[#f3c3d0]">
             FOR LOCAL EMPLOYERS
           </p>
-          <h2 className="text-5xl leading-none tracking-[-3px]">
+
+          <h2 className="text-4xl leading-tight tracking-[-2px] sm:text-5xl sm:leading-none sm:tracking-[-3px]">
             Find the people
             <br />
             who make{" "}
-            <em className="font-normal text-[#f3c3d0]">things happen.</em>
+            <em className="font-normal text-[#f3c3d0]">
+              things happen.
+            </em>
           </h2>
-          <p className="my-6 max-w-[350px] text-sm leading-6 text-[#f1c7d3]">
-            Complete company verification, choose a plan, post live roles, and
-            connect with motivated talent from Kanchipuram.
+
+          <p className="my-6 max-w-[400px] text-[15px] leading-7 text-[#f1c7d3]">
+            Complete company verification, choose a plan, post live roles,
+            and connect with motivated talent from Kanchipuram.
           </p>
+
           <a
-            className="inline-flex rounded bg-[#f3c3d0] px-[18px] py-3.5 text-xs font-bold text-[#ac1e44]"
-            href="#contact"
+            className="inline-flex items-center gap-2 rounded-lg bg-[#f3c3d0] px-5 py-3.5 text-sm font-bold text-[#ac1e44] transition hover:bg-white"
+            href="#recruiter"
           >
-            Start hiring ↗
+            Start hiring
+            <FiArrowUpRight aria-hidden="true" />
           </a>
         </div>
-        <div className="relative mt-8 h-[280px] w-full max-w-[300px] self-center overflow-hidden rounded-2xl border border-[#f3c3d0]/30 bg-[#8f1838] md:mt-0 md:h-[320px] md:w-[280px]">
-          <Image src={recruiterImage} alt="Recruiter using Kanchipuram Jobs" fill className="object-contain p-3" />
+
+        <div className="relative mt-10 h-[260px] w-full max-w-[300px] self-center overflow-hidden rounded-2xl border border-[#f3c3d0]/30 bg-[#8f1838] md:mt-0 md:h-[320px] md:w-[280px]">
+          <Image
+            src={recruiterImage}
+            alt="Recruiter using Kanchipuram Jobs"
+            fill
+            sizes="(max-width: 768px) 280px, 300px"
+            className="object-contain p-3"
+          />
         </div>
       </div>
     </section>
   );
 }
-export function AboutSection({ aboutUrl }: { aboutUrl: string }) {
+
+/* --------------------------------------------------
+   ABOUT SECTION
+-------------------------------------------------- */
+
+export function AboutSection({
+  aboutUrl,
+}: {
+  aboutUrl: string;
+}) {
   return (
     <section
-      className={`${wrap} grid gap-10 border-t border-[#ead9de] py-20 md:grid-cols-2 md:gap-24`}
+      className={`${wrap} grid scroll-mt-24 gap-10 border-t border-[#ead9de] py-20 md:grid-cols-2 md:gap-24`}
       id="about"
     >
       <div>
-        <p className="mb-5 text-[10px] font-extrabold tracking-[2px] text-[#9d536c]">
+        <p className="mb-5 text-sm font-extrabold tracking-[2px] text-[#9d536c]">
           MADE FOR OUR COMMUNITY
         </p>
+
         <h2 className={heading}>
           Opportunity
           <br />
-          <em className="font-normal text-[#ac1e44]">lives here.</em>
+          <em className="font-normal text-[#ac1e44]">
+            lives here.
+          </em>
         </h2>
       </div>
+
       <div>
-        <p className="my-5 max-w-[410px] text-[15px] leading-7 text-[#765361]">
+        <p className="my-5 max-w-[480px] text-[15px] leading-7 text-[#765361]">
           Kanchipuram Jobs brings local talent and local ambition closer
-          together. Job seekers can find, apply, and follow opportunities while
-          verified recruiters build their teams.
+          together. Job seekers can find, apply, and follow opportunities
+          while verified recruiters build their teams.
         </p>
-        <a className="text-xs font-bold text-[#ac1e44]" href={aboutUrl}>
-          More about us →
+
+        <a
+          className="inline-flex items-center gap-2 text-sm font-bold text-[#ac1e44] transition hover:gap-3"
+          href={aboutUrl}
+        >
+          More about us
+          <FiArrowUpRight aria-hidden="true" />
         </a>
       </div>
     </section>
   );
 }
+
+/* --------------------------------------------------
+   TESTIMONIALS SECTION
+-------------------------------------------------- */
+
+
 export function Testimonials() {
+  const testimonials = [
+    {
+      quote:
+        "Kanchipuram Jobs makes finding opportunities closer to home much easier. It brings local talent and companies together on one platform.",
+      author: "Siva",
+      role: "Job Seeker",
+      initial: "S",
+    },
+    {
+      quote:
+        "A platform that understands local hiring needs. Connecting with people from our own community makes recruitment more convenient.",
+      author: "Sakthi",
+      role: "Recruiter",
+      initial: "S",
+    },
+    {
+      quote:
+        "Finding relevant job opportunities around Kanchipuram is now simpler. I like having everything organized in one place.",
+      author: "Arun",
+      role: "Job Seeker",
+      initial: "A",
+    },
+    {
+      quote:
+        "Kanchipuram Jobs creates a valuable connection between job seekers and employers. It can make local career opportunities easier to discover.",
+      author: "Vaishnavi",
+      role: "Job Seeker",
+      initial: "V",
+    },
+    {
+      quote:
+        "It's encouraging to see a platform focused on our local community, helping businesses find talent and people discover new opportunities.",
+      author: "Kamachi",
+      role: "Community Member",
+      initial: "K",
+    },
+  ];
+
+  // Duplicate the testimonials to create a seamless infinite loop.
+  const scrollingTestimonials = [
+    ...testimonials,
+    ...testimonials,
+  ];
+
   return (
-    <section className="bg-[#f8e7ec] py-24">
-      <div className={wrap}>
-        <div className="mb-12 text-center">
-          <p className="mb-5 text-[10px] font-extrabold tracking-[2px] text-[#9d536c]">
+    <section className="overflow-hidden bg-[#f8e7ec] py-20 sm:py-24">
+      <div className={`${wrap} mb-12`}>
+        <div className="text-center">
+          <p className="mb-5 text-sm font-extrabold tracking-[2px] text-[#9d536c]">
             OUR COMMUNITY SAYS
           </p>
+
           <h2 className={heading}>
             Small steps.
             <br />
-            <em className="font-normal text-[#ac1e44]">Big possibilities.</em>
+            <em className="font-normal text-[#ac1e44]">
+              Big possibilities.
+            </em>
           </h2>
+
+          <p className="mx-auto mt-5 max-w-[520px] text-[15px] leading-7 text-[#896575]">
+            Every connection creates an opportunity. Discover what our
+            community thinks about bringing local talent and employers
+            together.
+          </p>
         </div>
-        <div className="grid gap-4 md:grid-cols-2">
-          {[
-            "I can finally find jobs near home and know exactly what happens after I apply.",
-            "Kanchipuram Jobs helps us reach motivated candidates without losing the local connection.",
-          ].map((q, i) => (
-            <blockquote
-              className="rounded-lg border border-[#ead1d9] bg-[#fffafb] p-8 font-serif text-xl leading-8 text-[#ac1e44]"
-              key={q}
+      </div>
+
+      {/* Infinite Horizontal Testimonial Slider */}
+      <div className="testimonial-slider group relative w-full overflow-hidden">
+        {/* Left and Right Fade Effects */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-[#f8e7ec] to-transparent sm:w-28" />
+
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[#f8e7ec] to-transparent sm:w-28" />
+
+        <div className="testimonial-track flex w-max">
+          {scrollingTestimonials.map((testimonial, index) => (
+            <article
+              key={`${testimonial.author}-${index}`}
+              aria-hidden={index >= testimonials.length}
+              className="mx-3 flex w-[290px] shrink-0 flex-col rounded-[24px] border border-[#ead1d9] bg-white p-7 shadow-[0_10px_30px_rgba(108,35,58,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_18px_36px_rgba(108,35,58,0.13)] sm:w-[350px] sm:p-8"
             >
-              “{q}”
-              <cite className="mt-6 block font-sans text-xs not-italic text-[#896575]">
-                — {i ? "Arun, Verified Recruiter" : "Priya, Job Seeker"}
-              </cite>
-            </blockquote>
+              {/* Quote Icon */}
+              <div className="mb-6 flex items-center justify-between">
+                <span className="text-5xl font-serif leading-none text-[#ac1e44]/25">
+                  “
+                </span>
+
+                <div className="flex gap-1 text-[#d69a35]">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <span key={star} aria-hidden="true">
+                      ★
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Testimonial Quote */}
+              <p className="min-h-[145px] text-[15px] leading-7 text-[#765361]">
+                “{testimonial.quote}”
+              </p>
+
+              {/* Person Details */}
+              <div className="mt-7 flex items-center gap-3 border-t border-[#f0e2e6] pt-5">
+                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#ac1e44] text-lg font-bold text-white">
+                  {testimonial.initial}
+                </div>
+
+                <div>
+                  <h3 className="text-[15px] font-bold text-[#24151a]">
+                    {testimonial.author}
+                  </h3>
+
+                  <p className="mt-1 text-xs font-medium text-[#9d536c]">
+                    {testimonial.role}
+                  </p>
+                </div>
+              </div>
+            </article>
           ))}
         </div>
       </div>
+
+      <p className="mt-8 text-center text-xs font-medium tracking-wide text-[#9d536c]">
+        Connecting local talent with local opportunities.
+      </p>
+
+      {/* Slider Animation */}
+      <style jsx>{`
+        .testimonial-track {
+          animation: testimonial-scroll 45s linear infinite;
+          will-change: transform;
+        }
+
+        .testimonial-slider:hover .testimonial-track {
+          animation-play-state: paused;
+        }
+
+        @keyframes testimonial-scroll {
+          from {
+            transform: translateX(0);
+          }
+
+          to {
+            transform: translateX(-50%);
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .testimonial-track {
+            animation: none;
+          }
+        }
+      `}</style>
     </section>
   );
 }
+
+
+/* --------------------------------------------------
+   FAQ SECTION
+-------------------------------------------------- */
+
 export function FaqSection() {
   return (
-    <section className={`${wrap} grid gap-10 py-24 md:grid-cols-2 md:gap-24`}>
+    <section className={`${wrap} grid gap-10 py-20 sm:py-24 md:grid-cols-2 md:gap-24`}>
       <div>
-        <p className="mb-5 text-[10px] font-extrabold tracking-[2px] text-[#9d536c]">
+        <p className="mb-5 text-sm font-extrabold tracking-[2px] text-[#9d536c]">
           HAVE QUESTIONS?
         </p>
+
         <h2 className={heading}>
           Everything you
           <br />
-          <em className="font-normal text-[#ac1e44]">need to know.</em>
+          <em className="font-normal text-[#ac1e44]">
+            need to know.
+          </em>
         </h2>
       </div>
+
       <div className="border-t border-[#dfb9c5]">
-        {faqs.map((f) => (
+        {faqs.map((question) => (
           <details
-            className="border-b border-[#dfb9c5] py-5 text-sm font-bold text-[#ac1e44]"
-            key={f}
+            className="group border-b border-[#dfb9c5] py-5 text-sm font-bold text-[#ac1e44]"
+            key={question}
           >
-            <summary className="flex cursor-pointer justify-between">
-              {f}
-              <span>+</span>
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
+              {question}
+
+              <span className="text-xl transition-transform group-open:rotate-45">
+                +
+              </span>
             </summary>
-            <p className="mt-4 max-w-[450px] text-xs font-normal leading-6 text-[#896575]">
-              We keep the process simple, transparent, and focused on connecting
-              local talent with genuine opportunities.
+
+            <p className="mt-4 max-w-[450px] text-sm font-normal leading-7 text-[#896575]">
+              We keep the process simple, transparent, and focused on
+              connecting local talent with genuine opportunities.
             </p>
           </details>
         ))}
@@ -270,6 +600,11 @@ export function FaqSection() {
     </section>
   );
 }
+
+/* --------------------------------------------------
+   WHY CHOOSE SECTION
+-------------------------------------------------- */
+
 export function WhyChooseSection() {
   const items = [
     [
@@ -293,23 +628,38 @@ export function WhyChooseSection() {
       "Follow your application from Applied and Screening through Interview or Selected.",
     ],
   ];
+
   return (
-    <section className="why-choose-section">
+    <section className="why-choose-section py-20 sm:py-24">
       <div className={`${wrap} text-center`}>
-        <h2 className="text-5xl font-bold tracking-[-2px]">
-          Why Choose Kanchipuram Jobs
-        </h2>
-        <p className="mx-auto mt-5 max-w-[620px] text-[15px] leading-7 text-[#765361]">
-          A trusted local platform built to make finding work simpler, safer,
-          and more rewarding.
+        <p className="mb-5 text-sm font-extrabold tracking-[2px] text-[#9d536c]">
+          YOUR LOCAL CAREER PLATFORM
         </p>
-        <div className="mt-20 grid grid-cols-2 gap-3 text-center lg:grid-cols-4">
-          {items.map(([icon, title, description]) => (
-            <article className="why-card" key={title}>
+
+        <h2 className={heading}>
+          Why Choose Kanchipuram Jobs?
+        </h2>
+
+        <p className="mx-auto mt-5 max-w-[620px] text-[15px] leading-7 text-[#765361]">
+          A trusted local platform built to make finding work simpler,
+          safer, and more rewarding.
+        </p>
+
+        <div className="mt-12 grid grid-cols-1 gap-4 text-center sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
+          {items.map(([icon, title, description], index) => (
+            <motion.article
+              key={title}
+              {...revealAnimation}
+              transition={{
+                ...revealAnimation.transition,
+                delay: index * 0.1,
+              }}
+              className="why-card"
+            >
               <div className="why-icon">{icon}</div>
               <h3>{title}</h3>
               <p>{description}</p>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>

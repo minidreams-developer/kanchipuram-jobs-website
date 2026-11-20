@@ -28,17 +28,17 @@ export default function AboutPlatform({ aboutUrl }: { aboutUrl: string }) {
     >
       <div className="mx-auto grid max-w-[1160px] items-center gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-24">
         <div className="relative grid grid-cols-2 items-stretch gap-3 sm:gap-5 lg:h-[460px]">
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.35 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             animate={{ y: [0, -8, 0] }}
             className="relative flex min-h-[330px] h-full items-center justify-center overflow-hidden rounded-xl bg-[#AC1E44] p-8 text-center text-white shadow-[0_18px_45px_rgba(172,30,68,0.18)] sm:min-h-[410px]"
-          >
+          > */}
             <span className="absolute -right-12 -top-12 h-36 w-36 rounded-full border border-white/20" />
             <span className="absolute -bottom-16 -left-10 h-44 w-44 rounded-full border border-white/15" />
-            <div className="px-4 sm:px-0">
+            {/* <div className="px-4 sm:px-0">
               <motion.div
                 animate={{ rotate: [0, -7, 7, 0], scale: [1, 1.06, 1] }}
                 transition={{
@@ -59,7 +59,7 @@ export default function AboutPlatform({ aboutUrl }: { aboutUrl: string }) {
                 JOBS
               </span>
             </div>
-          </motion.div>
+          </motion.div> */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -119,7 +119,7 @@ export default function AboutPlatform({ aboutUrl }: { aboutUrl: string }) {
           </motion.div>
         </div>
         <div>
-          <p className="mb-5 text-[10px] font-extrabold tracking-[2px] text-[#9d536c]">
+          <p className="mb-5 text-[20px] font-extrabold tracking-[2px] text-[#9d536c]">
             ABOUT KANCHIPURAM JOBS
           </p>
           <h2 className="text-4xl font-bold leading-none tracking-[-2px] text-[#24151a] sm:text-5xl">

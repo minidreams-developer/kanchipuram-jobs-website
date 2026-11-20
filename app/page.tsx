@@ -1,3 +1,4 @@
+
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Footer from "../components/Footer";
@@ -19,37 +20,59 @@ export default function Home() {
   return (
     <main>
       <Navbar />
-      <MotionReveal>
-        <Hero />
-      </MotionReveal>
+
+      <div id="top">
+        <MotionReveal>
+          <Hero />
+        </MotionReveal>
+      </div>
+
       <Stats />
-      <HowItWorks />
+
+      <div id="HowItWorks" className="scroll-mt-24">
+        <HowItWorks />
+      </div>
+
       <MotionReveal>
         <WhyChoose />
       </MotionReveal>
-      <MotionReveal>
-        <AboutPlatform aboutUrl="#about" />
-      </MotionReveal>
+
+      <div id="AboutPlatform" className="scroll-mt-24">
         <MotionReveal>
+          <AboutPlatform aboutUrl="#about" />
+        </MotionReveal>
+      </div>
+
+      <MotionReveal>
         <MissionSection />
       </MotionReveal>
+
       <MotionReveal>
         <JobsSection />
       </MotionReveal>
-      <MotionReveal>
-        <JobSeekersSection />
-      </MotionReveal>
-      <MotionReveal>
-        <RecruitersSection />
-      </MotionReveal>
 
-    
+      {/* Job Seeker Navigation Target */}
+      <div id="JobSeekersSection" className="scroll-mt-24">
+        <MotionReveal>
+          <JobSeekersSection />
+        </MotionReveal>
+      </div>
+
+      {/* Recruiter Navigation Target */}
+      <div id="RecruitersSection" className="scroll-mt-24">
+        <MotionReveal>
+          <RecruitersSection />
+        </MotionReveal>
+      </div>
+
       <MotionReveal>
         <Testimonials />
       </MotionReveal>
+
       <MotionReveal>
         <FaqSection />
       </MotionReveal>
+
       <MotionReveal>
         <Footer />
       </MotionReveal>

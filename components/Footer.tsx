@@ -34,9 +34,11 @@ export default function Footer() {
       <div className="mx-auto flex w-[calc(100%-2rem)] max-w-[1160px] flex-col justify-between gap-3 pt-[18px] text-[10px] text-[#f0becd] sm:w-[calc(100%-4.5rem)] md:flex-row">
         <span>© 2026 Kanchipuram Jobs</span>
         <div className="flex gap-6">
-          <a href="/privacy-policy">Privacy policy</a>
+          
           <a href="/terms-and-conditions">Terms &amp; conditions</a>
-          <a href="/disclaimer">Disclaimer</a>
+          <a href="/js-privacy-policy">Job Seekers Privacy policy</a>
+          <a href="/recruiter-privacy-policy">Recruiter Privacy policy</a>
+          <a href="/refund-policy">Refund policy</a>
         </div>
       </div>
     </footer>

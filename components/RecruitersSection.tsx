@@ -47,7 +47,7 @@ export default function RecruitersSection() {
     >
       <div className="mx-auto grid max-w-[1160px] items-center gap-12 px-5 sm:px-9 lg:grid-cols-[1.1fr_.9fr] lg:gap-20">
         <MotionReveal>
-          <p className="mb-5 text-[10px] font-extrabold tracking-[2px] text-[#9d536c]">
+          <p className="mb-5 text-[20px] font-extrabold tracking-[2px] text-[#9d536c]">
             FOR RECRUITERS
           </p>
           <h2
