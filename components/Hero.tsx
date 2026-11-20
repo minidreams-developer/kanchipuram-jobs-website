@@ -6,31 +6,17 @@ import playStoreButton from "../app/assets/Storebutton/playstoreBtn-C0Szw4ml.svg
 export default function HeroSection() {
   return (
     <section
-      id="top"
-      className="relative isolate min-h-[720px] overflow-hidden bg-[#26151b] text-white"
-      style={{
-        backgroundImage: "url('/kanchipuram-jobs-heroimage.png')",
-        backgroundSize: "100% 100%",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      {/* Background overlay */}
-      <div
-        className="
-    absolute inset-0 z-0
-    bg-gradient-to-r
-    from-[#190b12]/45
-    via-[#190b12]/15
-    to-transparent
-  "
-      />
+  id="top"
+  className="hero-background relative isolate min-h-[720px] overflow-hidden bg-[#26151b] text-white"
+  style={{
+    backgroundImage: "url('/kanchipuram-jobs-heroimage.png')",
+  }}
+>
+  {/* Background overlay */}
+  <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#190b12]/45 via-[#190b12]/15 to-transparent" />
 
-      {/* Bottom overlay */}
-      <div
-        className="absolute inset-x-0 bottom-0 z-0 h-40
-        bg-gradient-to-t from-black/50 to-transparent"
-      />
+  {/* Bottom overlay */}
+  <div className="absolute inset-x-0 bottom-0 z-0 h-40 bg-gradient-to-t from-black/50 to-transparent" />
 
       {/* Content */}
       <div

@@ -62,9 +62,8 @@ export function HowItWorks() {
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Reuse the hero artwork as the section background, behind the phone preview. */}
           <Image
-            src="/Kanchipuram_How-It-Works.png"
+            src="/Kanchipuram-working.png"
             alt=""
             fill
             aria-hidden="true"
@@ -74,15 +73,7 @@ export function HowItWorks() {
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-br from-black/75 via-black/45 to-[#ac1e44]/60"
           />
-          {/* Keep the phone artwork clear; the brand colour sits behind it as a soft glow. */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -bottom-24 left-1/2 z-0 h-72 w-[130%] -translate-x-1/2 rounded-full bg-[#c91643]/35 blur-3xl"
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_88%,rgba(201,22,67,0.2),transparent_48%)]"
-          />
+
 
           {/* Phone: centered, padded, never cropped */}
           <div className="absolute inset-0 z-10 flex items-center justify-center px-2 pt-2 pb-10 sm:px-8 sm:pt-6 sm:pb-24">

@@ -26,8 +26,21 @@ export default function AboutPlatform({ aboutUrl }: { aboutUrl: string }) {
       className="border-t border-[#ead9de] bg-white px-4 py-20 sm:px-9 lg:py-28"
       id="about"
     >
-      <div className="mx-auto grid max-w-[1160px] items-center gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-24">
-        <div className="relative grid grid-cols-2 items-stretch gap-3 sm:gap-5 lg:h-[460px]">
+      <div
+        className="
+  mx-auto grid w-full max-w-[1160px]
+  grid-cols-1 items-center
+  gap-12
+  lg:grid-cols-2 lg:gap-16
+"
+      >
+        <div
+          className="
+  relative flex w-full min-w-0
+  items-center justify-center
+  lg:h-[460px]
+"
+        >
           {/* <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -36,9 +49,9 @@ export default function AboutPlatform({ aboutUrl }: { aboutUrl: string }) {
             animate={{ y: [0, -8, 0] }}
             className="relative flex min-h-[330px] h-full items-center justify-center overflow-hidden rounded-xl bg-[#AC1E44] p-8 text-center text-white shadow-[0_18px_45px_rgba(172,30,68,0.18)] sm:min-h-[410px]"
           > */}
-            <span className="absolute -right-12 -top-12 h-36 w-36 rounded-full border border-white/20" />
-            <span className="absolute -bottom-16 -left-10 h-44 w-44 rounded-full border border-white/15" />
-            {/* <div className="px-4 sm:px-0">
+          <span className="absolute -right-12 -top-12 h-36 w-36 rounded-full border border-white/20" />
+          <span className="absolute -bottom-16 -left-10 h-44 w-44 rounded-full border border-white/15" />
+          {/* <div className="px-4 sm:px-0">
               <motion.div
                 animate={{ rotate: [0, -7, 7, 0], scale: [1, 1.06, 1] }}
                 transition={{
@@ -69,7 +82,15 @@ export default function AboutPlatform({ aboutUrl }: { aboutUrl: string }) {
               delay: 0.12,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="relative flex h-[330px] min-w-0 flex-col items-center justify-center overflow-visible sm:h-[410px] lg:h-[460px]"
+            className="
+  relative mx-auto flex
+  h-[330px] w-full max-w-[520px]
+  min-w-0 flex-col
+  items-center justify-center
+  overflow-visible
+  sm:h-[410px]
+  lg:h-[460px]
+"
           >
             {/* Image area */}
             <div className="relative flex min-h-0 w-full flex-1 items-center justify-center px-0">
@@ -87,7 +108,10 @@ export default function AboutPlatform({ aboutUrl }: { aboutUrl: string }) {
                     alt="Professionals discovering opportunities in Kanchipuram"
                     width={jobSeekerImages[imageIndex].width}
                     height={jobSeekerImages[imageIndex].height}
-                    className="h-full w-full scale-110 object-contain object-center"
+                    className="
+    block h-full w-full
+    object-contain object-center
+  "
                   />
                 </motion.div>
               </AnimatePresence>
