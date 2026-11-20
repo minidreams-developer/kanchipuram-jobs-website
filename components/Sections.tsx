@@ -5,17 +5,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   FiArrowUpRight,
-  FiBookOpen,
-  FiHeart,
-  FiHome,
-  FiTrendingUp,
+  
 } from "react-icons/fi";
 
 import recruiterImage from "../app/assets/HowtoWorkimages/image1.png";
-import image1 from "@/app/assets/jobsection/image1.jpg";
-import image2 from "@/app/assets/jobsection/image2.jpg";
-import image3 from "@/app/assets/jobsection/image3.jpg";
-import image4 from "@/app/assets/jobsection/image4.jpg";
+
 
 /* Shared container styles */
 const wrap =
@@ -26,28 +20,7 @@ const heading =
   "text-4xl leading-tight tracking-[-2px] text-[#24151a] sm:text-5xl sm:leading-none sm:tracking-[-3px]";
 
 /* Job categories */
-const categories = [
-  {
-    title: "Construction & Architecture",
-    icon: FiHome,
-    image: image1,
-  },
-  {
-    title: "Education & Training",
-    icon: FiBookOpen,
-    image: image2,
-  },
-  {
-    title: "Sales & Marketing",
-    icon: FiTrendingUp,
-    image: image3,
-  },
-  {
-    title: "Healthcare & Wellness",
-    icon: FiHeart,
-    image: image4,
-  },
-];
+
 
 /* FAQ questions */
 const faqs = [
@@ -78,122 +51,7 @@ const revealAnimation = {
   },
 };
 
-/* --------------------------------------------------
-   JOBS SECTION
--------------------------------------------------- */
 
-export function JobsSectionStory() {
-  return (
-    <section className={`${wrap} py-20 sm:py-24`} id="jobs">
-      {/* Section Heading */}
-      <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-        <div>
-          <p
-  className="mb-5 font-extrabold tracking-[2px] text-[#9d536c]"
-  style={{ fontSize: "20px" }}
->
-  OPPORTUNITIES, YOUR WAY
-</p>
-
-          <h2 className={heading}>
-            Find work that fits
-            <br />
-            <em className="font-normal text-[#ac1e44]">
-              your life.
-            </em>
-          </h2>
-
-          <p className="my-6 max-w-[430px] text-[15px] leading-7 text-[#765361]">
-            Search by category, location, salary, experience, and job type
-            to discover the opportunity made for you.
-          </p>
-        </div>
-
-        <a
-          className="inline-flex items-center gap-2 rounded-lg border border-[#d89bad] px-5 py-3.5 text-sm font-bold text-[#ac1e44] transition-all hover:bg-[#ac1e44] hover:text-white"
-          href="#jobseeker"
-        >
-          Browse all jobs
-          <FiArrowUpRight aria-hidden="true" />
-        </a>
-      </div>
-
-      {/* Category Cards */}
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        
-{categories.map((category, index) => {
-  const Icon = category.icon;
-
-  return (
-    <motion.a
-      key={category.title}
-      href="#jobseeker"
-      {...revealAnimation}
-      transition={{
-        ...revealAnimation.transition,
-        delay: index * 0.1,
-      }}
-      whileHover={{
-        y: -8,
-        scale: 1.02,
-      }}
-      className="group relative isolate flex min-h-[315px] flex-col overflow-hidden rounded-[28px] border border-[#ead1d9] bg-white p-6 shadow-[0_10px_28px_rgba(108,35,58,0.06)] transition-shadow duration-500 hover:shadow-[0_18px_36px_rgba(108,35,58,0.15)]"
-    >
-      {/* Full Card Background Image */}
-      <div
-        className="absolute inset-0 -z-20 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-        style={{
-          backgroundImage: `url("${category.image.src}")`,
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Light overlay to keep text readable */}
-      <div
-        className="absolute inset-0 -z-10 bg-gradient-to-t from-white/95 via-white/65 to-white/25"
-        aria-hidden="true"
-      />
-
-      {/* Subtle pink tint */}
-      <div
-        className="absolute inset-0 -z-10 bg-[#f9dce6]/15"
-        aria-hidden="true"
-      />
-
-      {/* Icon and Arrow */}
-      <div className="flex items-center justify-between">
-        <span className="grid h-[60px] w-[60px] place-items-center rounded-2xl bg-white/90 text-2xl text-[#ac1e44] shadow-sm backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
-          <Icon aria-hidden="true" />
-        </span>
-
-        <span className="grid h-[45px] w-[45px] place-items-center rounded-full bg-[#ac1e44] text-xl text-white shadow-md transition-transform duration-300 group-hover:rotate-45">
-          <FiArrowUpRight aria-hidden="true" />
-        </span>
-      </div>
-
-      {/* Category Information */}
-      <div className="mt-auto">
-        <div className="mb-5 flex items-center justify-between text-[10px] font-extrabold tracking-[1.8px] text-[#ac1e44]">
-          <span>LOCAL OPPORTUNITY</span>
-          <span>0{index + 1}</span>
-        </div>
-
-        <h3 className="text-xl font-semibold leading-snug text-[#24151a]">
-          {category.title}
-        </h3>
-
-        <p className="mt-3 text-sm leading-6 text-[#765361]">
-          Find trusted local opportunities and take your next step.
-        </p>
-      </div>
-    </motion.a>
-  );
-})}
-
-      </div>
-    </section>
-  );
-}
 
 /* --------------------------------------------------
    STATS SECTION

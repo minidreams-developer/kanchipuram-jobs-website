@@ -8,12 +8,10 @@
   --cream: #fcf7f8;
   --line: #ead9de;
 
-  --nav-height: 64px;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-height);
   overflow-x: clip;
   scrollbar-width: none;
   -ms-overflow-style: none;
