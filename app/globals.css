@@ -305,7 +305,8 @@ body {
 }
 
 .hero-background {
-  background-size: 100% 100%;
+  /* Keep the source image's aspect ratio instead of stretching it to both axes. */
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
 }

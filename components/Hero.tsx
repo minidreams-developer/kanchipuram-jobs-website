@@ -13,7 +13,7 @@ export default function HeroSection() {
   }}
 >
   {/* Background overlay */}
-  <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#190b12]/45 via-[#190b12]/15 to-transparent" />
+  <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#190b12]/65 via-[#190b12]/35 to-[#190b12]/10" />
 
   {/* Bottom overlay */}
   <div className="absolute inset-x-0 bottom-0 z-0 h-40 bg-gradient-to-t from-black/50 to-transparent" />
@@ -36,9 +36,9 @@ export default function HeroSection() {
         {/* Main heading */}
         <h1
           className="hero-heading max-w-[850px]
-          text-[clamp(3.2rem,6.5vw,6rem)]
+          text-[clamp(2.5rem,5.2vw,4.75rem)]
           font-extrabold leading-[1.02]
-          tracking-[-3px]"
+          tracking-[-2.5px]"
         >
           Work that moves
           <span className="hero-highlight block italic">you forward.</span>
