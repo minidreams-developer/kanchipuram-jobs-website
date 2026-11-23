@@ -3,7 +3,9 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import ContactForm from "./ContactForm";
+import logo from "../app/assets/Kanchipuram Jobs logo/Logo file formats/Kanchipuram Jobs logo PNG-01.png";
 import {
   FiArrowUpRight,
   FiBriefcase,
@@ -145,22 +147,9 @@ export default function Navbar() {
           href={homeLink}
           onClick={() => setMenuOpen(false)}
         >
-          <span className="grid h-[38px] w-[38px] place-items-center rounded-[11px] bg-[#ac1e44] text-[23px] font-black italic text-[#f3c3d0]">
-            K
-          </span>
+          <Image src={logo} alt="Kanchipuram Jobs" width={190} height={60} className="h-[52px] w-[165px] object-contain px-1 py-1 sm:h-[58px] sm:w-[190px]" priority />
 
-          <span
-            className={
-              scrolled || isInnerPage
-                ? "text-[#24151a]"
-                : "text-white"
-            }
-          >
-            Kanchipuram{" "}
-            <b className="block text-[11px] tracking-[2px] text-[#f3c3d0]">
-              JOBS
-            </b>
-          </span>
+          {/* <Image src={logo} alt="Kanchipuram Jobs" width={220} height={72} className="h-[60px] w-[180px] object-contain px-1 py-1 sm:h-[58px] sm:w-[200px]" priority /> */}
         </a>
 
         {/* Desktop Navigation */}
