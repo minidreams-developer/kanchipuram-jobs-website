@@ -1,3 +1,6 @@
+import Image from "next/image";
+import logo from "../app/assets/Kanchipuram Jobs logo/Logo file formats/logo1.png";
+
 export default function Footer() {
   return (
     <footer id="contact" className="bg-[#ac1e44] px-0 py-[53px] text-white">
@@ -6,15 +9,7 @@ export default function Footer() {
           className="flex items-center gap-2.5 text-lg font-bold"
           href="#top"
         >
-          <span className="grid h-[35px] w-[35px] place-items-center rounded-[11px] bg-[#f3c3d0] text-[21px] font-black italic text-[#ac1e44]">
-            K
-          </span>
-          <span>
-            Kanchipuram{" "}
-            <b className="block text-[10px] tracking-[2px] text-[#f1c7d3]">
-              JOBS
-            </b>
-          </span>
+          <Image src={logo} alt="Kanchipuram Jobs" width={260} height={82} className="h-[68px] w-[220px] object-contain sm:h-[76px] sm:w-[250px]" />
         </a>
         <div>
           <small className="mb-2 block text-sm text-[#f1c7d3]">

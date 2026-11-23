@@ -147,7 +147,7 @@ export default function Navbar() {
           href={homeLink}
           onClick={() => setMenuOpen(false)}
         >
-          <Image src={logo} alt="Kanchipuram Jobs" width={190} height={60} className="h-[52px] w-[165px] object-contain px-1 py-1 sm:h-[58px] sm:w-[190px]" priority />
+          <Image src={logo} alt="Kanchipuram Jobs" width={230} height={72} className="h-[58px] w-[200px] object-contain px-1 py-1 sm:h-[64px] sm:w-[225px]" priority />
 
           {/* <Image src={logo} alt="Kanchipuram Jobs" width={220} height={72} className="h-[60px] w-[180px] object-contain px-1 py-1 sm:h-[58px] sm:w-[200px]" priority /> */}
         </a>
