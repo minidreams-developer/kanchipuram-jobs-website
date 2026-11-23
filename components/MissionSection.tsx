@@ -1,15 +1,8 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { FiGlobe, FiStar, FiShield, FiUsers } from "react-icons/fi";
+import { FiStar, FiShield, FiUsers, FiBriefcase } from "react-icons/fi";
 import { useEffect, useRef, useState } from "react";
-
-const missionStats = [
-  [FiUsers, "1,200", "Jobs posted", "+"],
-  [FiStar, "850", "Active employers", "+"],
-  [FiShield, "4.9", "Community rating", "/5"],
-  [FiGlobe, "100", "Local opportunities", "%"],
-] as const;
 
 function Counter({ value, suffix }: { value: string; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -37,6 +30,23 @@ function Counter({ value, suffix }: { value: string; suffix: string }) {
 }
 
 export default function MissionSection() {
+  const [stats, setStats] = useState<{ users: number; recruiters: number; jobs: number } | null>(null);
+
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin-dashboard/public-stats`)
+      .then((response) => response.ok ? response.json() : null)
+      .then((data) => data && setStats(data))
+      .catch(() => undefined);
+  }, []);
+
+  const format = (value: number | undefined) => value === undefined ? "—" : value.toLocaleString("en-IN");
+  const missionStats = [
+    [FiBriefcase, format(stats?.jobs), "Jobs posted", ""],
+    [FiUsers, format(stats?.recruiters), "Recruiters", ""],
+    [FiShield, "4.9", "Community rating", "/5"],
+    [FiStar, format(stats?.users), "Job seekers", ""],
+  ] as const;
+
   return (
     <section className="border-t border-[#ead9de] bg-white px-4 py-20 sm:px-9 lg:py-28">
       <div className="mx-auto grid max-w-[1160px] items-center gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">

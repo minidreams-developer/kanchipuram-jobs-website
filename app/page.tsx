@@ -9,11 +9,7 @@ import MissionSection from "../components/MissionSection";
 import { HowItWorks } from "../components/HowItWorks";
 import JobSeekersSection from "../components/JobSeekersSection";
 import RecruitersSection from "../components/RecruitersSection";
-import {
-  FaqSection,
-  Testimonials,
-  Stats,
-} from "../components/Sections";
+import { FaqSection, Testimonials, Stats } from "../components/Sections";
 import MotionReveal from "../components/MotionReveal";
 
 export default function Home() {

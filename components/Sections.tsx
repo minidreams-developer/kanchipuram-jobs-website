@@ -3,6 +3,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import {
   FiArrowUpRight,
   
@@ -58,11 +59,37 @@ const revealAnimation = {
 -------------------------------------------------- */
 
 export function Stats() {
+  const [publicStats, setPublicStats] = useState<{
+    users: number;
+    recruiters: number;
+    jobs: number;
+  } | null>(null);
+
+  useEffect(() => {
+    const loadPublicStats = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/admin-dashboard/public-stats`
+        );
+        if (!response.ok) return;
+        const data = await response.json();
+        setPublicStats(data);
+      } catch {
+        // Keep the stats placeholders when the public API is unavailable.
+      }
+    };
+
+    loadPublicStats();
+  }, []);
+
+  const formatStat = (value: number | undefined) =>
+    value === undefined ? "—" : value.toLocaleString("en-IN");
+
   const statistics = [
-    ["1,200", "Jobs posted", "+"],
-    ["850", "Active employers", "+"],
+    [formatStat(publicStats?.recruiters), "Recruiters", ""],
+    [formatStat(publicStats?.users), "Job seekers", ""],
+    [formatStat(publicStats?.jobs), "Jobs posted", ""],
     ["4.9", "Community rating", "/5"],
-    ["100", "Local opportunities", "%"],
   ];
 
   return (

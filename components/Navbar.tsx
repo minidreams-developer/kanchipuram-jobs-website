@@ -3,10 +3,12 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import ContactForm from "./ContactForm";
 import {
   FiArrowUpRight,
   FiBriefcase,
   FiInfo,
+  FiMail,
   FiList,
   FiMenu,
   FiUser,
@@ -18,6 +20,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("top");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
   const pathname = usePathname();
   const isInnerPage = pathname !== "/";
@@ -62,12 +65,12 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
+    document.body.style.overflow = menuOpen || contactOpen ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
     };
-  }, [menuOpen]);
+  }, [menuOpen, contactOpen]);
 
   const handleNavClick = (
     event: React.MouseEvent<HTMLAnchorElement>
@@ -117,6 +120,11 @@ export default function Navbar() {
       icon: FiUsers,
     },
   ];
+
+  const openContact = () => {
+    setMenuOpen(false);
+    setContactOpen(true);
+  };
 
   return (
     <nav
@@ -179,6 +187,11 @@ export default function Navbar() {
             </a>
           ))}
         </div>
+
+        <button type="button" onClick={openContact} className={`hidden items-center gap-2 border-b-2 border-transparent py-2 text-[16px] font-semibold transition hover:-translate-y-0.5 hover:border-[#ac1e44] hover:text-[#ac1e44] lg:inline-flex ${scrolled || isInnerPage ? "text-[#815566]" : "text-white"}`}>
+          <FiMail size={18} aria-hidden="true" />
+          Contact
+        </button>
 
         {/* Download App Button */}
         <a
@@ -250,6 +263,8 @@ export default function Navbar() {
               </a>
             ))}
 
+            <button type="button" onClick={openContact} className="flex w-full items-center gap-3 rounded-2xl px-3 py-4 text-left text-[15px] font-semibold transition-colors hover:bg-[#fff1f5]"><FiMail size={19} className="text-[#ac1e44]" /> Contact <FiArrowUpRight size={17} className="ml-auto text-[#b06a80]" /></button>
+
             {/* Policy Links */}
             <div className="mt-3 border-t border-[#f0e2e6] pt-3">
               <a
@@ -287,6 +302,7 @@ export default function Navbar() {
           </div>
         </>
       )}
+      <ContactForm open={contactOpen} onClose={() => setContactOpen(false)} />
     </nav>
   );
 }
