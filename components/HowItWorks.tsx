@@ -91,7 +91,7 @@ export function HowItWorks() {
                   alt={steps[activeStep].title}
                   width={steps[activeStep].image.width}
                   height={steps[activeStep].image.height}
-                 className="block h-auto w-auto max-h-full max-w-full scale-125 object-contain object-center"
+                 className="block h-auto w-auto max-h-[92%] max-w-[92%] scale-100 object-contain object-center"
                 />
               </motion.div>
             </AnimatePresence>
