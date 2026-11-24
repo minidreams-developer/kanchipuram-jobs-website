@@ -7,13 +7,13 @@ export default function HeroSection() {
   return (
     <section
   id="top"
-  className="hero-background relative isolate min-h-[720px] overflow-hidden bg-[#26151b] text-white"
+  className="hero-background relative isolate min-h-[720px] overflow-hidden text-white"
   style={{
-    backgroundImage: "url('/kanchipuram-jobs-heroimage.png')",
+    backgroundImage: "url('/kanchipuram-image-hero.png')",
   }}
 >
   {/* Background overlay */}
-  <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#190b12]/65 via-[#190b12]/35 to-[#190b12]/10" />
+  <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#190b12]/30 via-[#190b12]/10 to-[#190b12]/10" />
 
   {/* Bottom overlay */}
   <div className="absolute inset-x-0 bottom-0 z-0 h-40 bg-gradient-to-t from-black/50 to-transparent" />
