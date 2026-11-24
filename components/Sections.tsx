@@ -1,16 +1,11 @@
-
 "use client";
 
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import {
-  FiArrowUpRight,
-  
-} from "react-icons/fi";
+import { FiArrowUpRight } from "react-icons/fi";
 
 import recruiterImage from "../app/assets/HowtoWorkimages/image1.png";
-
 
 /* Shared container styles */
 const wrap =
@@ -22,14 +17,44 @@ const heading =
 
 /* Job categories */
 
-
 /* FAQ questions */
+
 const faqs = [
-  "What is Kanchipuram Jobs?",
-  "How do I apply for a job?",
-  "Can I track my application status?",
-  "How are recruiters verified?",
-  "Can recruiters post jobs immediately?",
+  {
+    question: "What is Kanchipuram Jobs?",
+    answer:
+      "Kanchipuram Jobs is a dedicated local recruitment platform connecting job seekers across Kanchipuram district, including nearby towns, panchayats, and villages, with local businesses. Our mission is to make hiring easier and help the entire community grow together.",
+  },
+  {
+    question: "How do I apply for a job?",
+    answer:
+      "Simply download the Kanchipuram Jobs app from the Google Play Store, create your profile, browse available job openings that match your skills and qualifications, and apply directly.",
+  },
+  {
+    question: "Is Kanchipuram Jobs free for job seekers?",
+    answer:
+      "Kanchipuram Jobs is completely free for candidates. We do not charge job seekers any registration fees, application fees, or other charges to explore opportunities and apply for jobs.",
+  },
+  {
+    question: "How can Kanchipuram Jobs help local businesses?",
+    answer:
+      "We help entrepreneurs and local businesses connect with skilled and reliable candidates from nearby areas, making hiring easier and helping businesses build stronger teams.",
+  },
+  {
+    question: "Can I find jobs near my hometown?",
+    answer:
+      "Yes! Kanchipuram Jobs focuses on opportunities across Kanchipuram district, including its towns, panchayats, and surrounding villages. Our goal is to connect you with relevant jobs closer to home.",
+  },
+  {
+    question: "Why should I choose Kanchipuram Jobs?",
+    answer:
+      "We bring local job seekers and employers together in one dedicated platform, making local hiring more accessible, relevant, and convenient for everyone.",
+  },
+  {
+    question: "How does Kanchipuram Jobs solve local hiring problems?",
+    answer:
+      "Our platform reduces app overload and location mismatches by bringing local job opportunities and candidates together in one place.",
+  },
 ];
 
 /* Reusable animation settings */
@@ -52,8 +77,6 @@ const revealAnimation = {
   },
 };
 
-
-
 /* --------------------------------------------------
    STATS SECTION
 -------------------------------------------------- */
@@ -69,7 +92,7 @@ export function Stats() {
     const loadPublicStats = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/admin-dashboard/public-stats`
+          `${process.env.NEXT_PUBLIC_API_URL}/admin-dashboard/public-stats`,
         );
         if (!response.ok) return;
         const data = await response.json();
@@ -99,9 +122,7 @@ export function Stats() {
           <div key={label} className="text-center">
             <strong className="text-3xl font-bold sm:text-[32px]">
               {number}
-              <span className="text-lg text-[#f3c3d0]">
-                {suffix}
-              </span>
+              <span className="text-lg text-[#f3c3d0]">{suffix}</span>
             </strong>
 
             <small className="mt-1 block text-xs text-[#f1c7d3] sm:text-sm">
@@ -135,9 +156,7 @@ export function WhySection() {
 
         <h2 className={heading}>
           Built around{" "}
-          <em className="font-normal text-[#ac1e44]">
-            real people.
-          </em>
+          <em className="font-normal text-[#ac1e44]">real people.</em>
         </h2>
 
         <p className="mx-auto my-5 max-w-[520px] text-[15px] leading-7 text-[#765361]">
@@ -195,14 +214,12 @@ export function EmployerSection() {
             Find the people
             <br />
             who make{" "}
-            <em className="font-normal text-[#f3c3d0]">
-              things happen.
-            </em>
+            <em className="font-normal text-[#f3c3d0]">things happen.</em>
           </h2>
 
           <p className="my-6 max-w-[400px] text-[15px] leading-7 text-[#f1c7d3]">
-            Complete company verification, choose a plan, post live roles,
-            and connect with motivated talent from Kanchipuram.
+            Complete company verification, choose a plan, post live roles, and
+            connect with motivated talent from Kanchipuram.
           </p>
 
           <a
@@ -232,11 +249,7 @@ export function EmployerSection() {
    ABOUT SECTION
 -------------------------------------------------- */
 
-export function AboutSection({
-  aboutUrl,
-}: {
-  aboutUrl: string;
-}) {
+export function AboutSection({ aboutUrl }: { aboutUrl: string }) {
   return (
     <section
       className={`${wrap} grid scroll-mt-24 gap-10 border-t border-[#ead9de] py-20 md:grid-cols-2 md:gap-24`}
@@ -250,17 +263,15 @@ export function AboutSection({
         <h2 className={heading}>
           Opportunity
           <br />
-          <em className="font-normal text-[#ac1e44]">
-            lives here.
-          </em>
+          <em className="font-normal text-[#ac1e44]">lives here.</em>
         </h2>
       </div>
 
       <div>
         <p className="my-5 max-w-[480px] text-[15px] leading-7 text-[#765361]">
           Kanchipuram Jobs brings local talent and local ambition closer
-          together. Job seekers can find, apply, and follow opportunities
-          while verified recruiters build their teams.
+          together. Job seekers can find, apply, and follow opportunities while
+          verified recruiters build their teams.
         </p>
 
         <a
@@ -279,51 +290,54 @@ export function AboutSection({
    TESTIMONIALS SECTION
 -------------------------------------------------- */
 
-
 export function Testimonials() {
   const testimonials = [
     {
       quote:
-        "Kanchipuram Jobs makes finding opportunities closer to home much easier. It brings local talent and companies together on one platform.",
-      author: "Siva",
-      role: "Job Seeker",
+        "I wish for everyone to benefit and prosper by using this application, which has been specially designed for the people of Kanchipuram.",
+      author: "Sri Kamatchi",
+      role: "CEO",
+      initial: "K",
+    },
+    {
+      quote:
+        "Hello, Kanchipuram! This application is very helpful for finding full-time, part-time, or work-from-home opportunities tailored to each person's individual circumstances. Best wishes!",
+      author: "Viji Parthiban",
+      role: "Homemaker",
       initial: "S",
     },
     {
       quote:
-        "A platform that understands local hiring needs. Connecting with people from our own community makes recruitment more convenient.",
-      author: "Sakthi",
-      role: "Recruiter",
+        "Labour shortages are widespread in the food industry, making it very difficult to find local staff. For me and my company—who have long wished for a platform like this Kanchipuram Jobs has proven to be a tremendous help. Kudos to the team behind its design!",
+      author: "Jesuraj",
+      role: "F&B Manager",
       initial: "S",
     },
     {
       quote:
-        "Finding relevant job opportunities around Kanchipuram is now simpler. I like having everything organized in one place.",
+        "If every town had an app like this, it would be a huge blessing for job-seeking youth like us. Instead of moving away from our families for work, we can find suitable jobs right here in our hometown and lead happy, fulfilling lives.",
       author: "Arun",
-      role: "Job Seeker",
+      role: "Team leader",
       initial: "A",
     },
     {
       quote:
-        "Kanchipuram Jobs creates a valuable connection between job seekers and employers. It can make local career opportunities easier to discover.",
-      author: "Vaishnavi",
-      role: "Job Seeker",
+        "I warmly welcome this application, as it directly addresses labour shortages-one of the biggest challenges faced by small and micro-business owners.",
+      author: "Anbil Periyavan",
+      role: "Managing Director",
       initial: "V",
     },
     {
       quote:
-        "It's encouraging to see a platform focused on our local community, helping businesses find talent and people discover new opportunities.",
-      author: "Kamachi",
-      role: "Community Member",
-      initial: "K",
+        "I hope this app serves as a meaningful answer to how Kanchipuram-and its digital community-has often been portrayed on media and social platforms.",
+      author: "Vaishnavi",
+      role: "Mentor",
+      initial: "V",
     },
   ];
 
   // Duplicate the testimonials to create a seamless infinite loop.
-  const scrollingTestimonials = [
-    ...testimonials,
-    ...testimonials,
-  ];
+  const scrollingTestimonials = [...testimonials, ...testimonials];
 
   return (
     <section className="overflow-hidden bg-[#f8e7ec] py-20 sm:py-24">
@@ -336,15 +350,12 @@ export function Testimonials() {
           <h2 className={heading}>
             Small steps.
             <br />
-            <em className="font-normal text-[#ac1e44]">
-              Big possibilities.
-            </em>
+            <em className="font-normal text-[#ac1e44]">Big possibilities.</em>
           </h2>
 
           <p className="mx-auto mt-5 max-w-[520px] text-[15px] leading-7 text-[#896575]">
-            Every connection creates an opportunity. Discover what our
-            community thinks about bringing local talent and employers
-            together.
+            Every connection creates an opportunity. Discover what our community
+            thinks about bringing local talent and employers together.
           </p>
         </div>
       </div>
@@ -361,7 +372,7 @@ export function Testimonials() {
             <article
               key={`${testimonial.author}-${index}`}
               aria-hidden={index >= testimonials.length}
-              className="mx-3 flex w-[290px] shrink-0 flex-col rounded-[24px] border border-[#ead1d9] bg-white p-7 shadow-[0_10px_30px_rgba(108,35,58,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_18px_36px_rgba(108,35,58,0.13)] sm:w-[350px] sm:p-8"
+              className="mx-3 flex h-[390px] w-[290px] shrink-0 flex-col rounded-[24px] border border-[#ead1d9] bg-white p-7 shadow-[0_10px_30px_rgba(108,35,58,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_18px_36px_rgba(108,35,58,0.13)] sm:h-[410px] sm:w-[350px] sm:p-8"
             >
               {/* Quote Icon */}
               <div className="mb-6 flex items-center justify-between">
@@ -379,12 +390,12 @@ export function Testimonials() {
               </div>
 
               {/* Testimonial Quote */}
-              <p className="min-h-[145px] text-[15px] leading-7 text-[#765361]">
+              <p className="h-[190px] overflow-y-auto text-[15px] leading-7 text-[#765361]">
                 “{testimonial.quote}”
               </p>
 
               {/* Person Details */}
-              <div className="mt-7 flex items-center gap-3 border-t border-[#f0e2e6] pt-5">
+              <div className="mt-auto flex min-h-[70px] shrink-0 items-center gap-3 border-t border-[#f0e2e6] pt-5">
                 <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#ac1e44] text-lg font-bold text-white">
                   {testimonial.initial}
                 </div>
@@ -439,45 +450,42 @@ export function Testimonials() {
   );
 }
 
-
 /* --------------------------------------------------
    FAQ SECTION
 -------------------------------------------------- */
 
 export function FaqSection() {
   return (
-    <section className={`${wrap} grid gap-10 py-20 sm:py-24 md:grid-cols-2 md:gap-24`}>
+    <section
+      className={`${wrap} grid gap-10 py-20 sm:py-24 md:grid-cols-2 md:gap-24`}
+    >
       <div>
         <p className="mb-5 text-sm font-extrabold tracking-[2px] text-[#9d536c]">
           HAVE QUESTIONS?
         </p>
 
         <h2 className={heading}>
-          Everything you
-          <br />
-          <em className="font-normal text-[#ac1e44]">
-            need to know.
-          </em>
+          Good
+          <em className="font-normal text-[#ac1e44]"> to know.</em>
         </h2>
       </div>
 
       <div className="border-t border-[#dfb9c5]">
-        {faqs.map((question) => (
+        {faqs.map((faq) => (
           <details
             className="group border-b border-[#dfb9c5] py-5 text-sm font-bold text-[#ac1e44]"
-            key={question}
+            key={faq.question}
           >
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-              {question}
+              {faq.question}
 
-              <span className="text-xl transition-transform group-open:rotate-45">
+              <span className="shrink-0 text-xl transition-transform duration-300 group-open:rotate-45">
                 +
               </span>
             </summary>
 
             <p className="mt-4 max-w-[450px] text-sm font-normal leading-7 text-[#896575]">
-              We keep the process simple, transparent, and focused on
-              connecting local talent with genuine opportunities.
+              {faq.answer}
             </p>
           </details>
         ))}
@@ -521,13 +529,11 @@ export function WhyChooseSection() {
           YOUR LOCAL CAREER PLATFORM
         </p>
 
-        <h2 className={heading}>
-          Why Choose Kanchipuram Jobs?
-        </h2>
+        <h2 className={heading}>Why Choose Kanchipuram Jobs?</h2>
 
         <p className="mx-auto mt-5 max-w-[620px] text-[15px] leading-7 text-[#765361]">
-          A trusted local platform built to make finding work simpler,
-          safer, and more rewarding.
+          A trusted local platform built to make finding work simpler, safer,
+          and more rewarding.
         </p>
 
         <div className="mt-12 grid grid-cols-1 gap-4 text-center sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
