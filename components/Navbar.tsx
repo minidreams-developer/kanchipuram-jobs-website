@@ -102,14 +102,14 @@ export default function Navbar() {
 
   const navigationItems = [
     {
-      label: "How it works",
-      id: "HowItWorks",
-      icon: FiList,
-    },
-    {
       label: "About us",
       id: "AboutPlatform",
       icon: FiInfo,
+    },
+    {
+      label: "How it works",
+      id: "HowItWorks",
+      icon: FiList,
     },
     {
       label: "Job Seeker",

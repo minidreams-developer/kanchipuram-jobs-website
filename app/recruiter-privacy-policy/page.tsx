@@ -49,18 +49,18 @@ export default function RecruiterPolicyPage() {
               Recruiter Policy
             </h1>
 
-            <p className="mt-3 text-sm text-[#766970]">
+            {/* <p className="mt-3 text-sm text-[#766970]">
               Last updated: November 24, 2026
-            </p>
+            </p> */}
 
             <div className="mt-10 space-y-7 text-[15px] leading-8 text-[#5e555a]">
 
               {/* Introduction */}
               <div className="space-y-2">
-                <p>
+                {/* <p>
                   <strong className="text-[#24151a]">Product Name:</strong>{" "}
                   Kanchipuram Jobs (A Portal of Siva Sakthi Staffing Solutions)
-                </p>
+                </p> */}
 
                 <p>
                   <strong className="text-[#24151a]">Applicable To:</strong>{" "}

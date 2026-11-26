@@ -24,6 +24,11 @@ export default function Home() {
       </div>
 
       <Stats />
+      <div id="AboutPlatform" className="scroll-mt-24">
+        <MotionReveal>
+          <AboutPlatform aboutUrl="#about" />
+        </MotionReveal>
+      </div>
 
       <div id="HowItWorks" className="scroll-mt-24">
         <HowItWorks />
@@ -33,11 +38,7 @@ export default function Home() {
         <WhyChoose />
       </MotionReveal>
 
-      <div id="AboutPlatform" className="scroll-mt-24">
-        <MotionReveal>
-          <AboutPlatform aboutUrl="#about" />
-        </MotionReveal>
-      </div>
+      
 
       <MotionReveal>
         <MissionSection />

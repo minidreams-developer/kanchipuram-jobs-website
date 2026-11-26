@@ -9,7 +9,7 @@ export default function HeroSection() {
   id="top"
   className="hero-background relative isolate min-h-[720px] overflow-hidden text-white"
   style={{
-    backgroundImage: "url('/kanchipuram-image-hero.png')",
+    backgroundImage: "url('/kanchipuram-jobs-hero-2.png')",
   }}
 >
   {/* Background overlay */}

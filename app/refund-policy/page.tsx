@@ -37,9 +37,9 @@ export default function RefundPolicyPage() {
                 Refund & Cancellation Policy
               </h1>
 
-              <p className="mt-2 text-xs text-white/80">
+              {/* <p className="mt-2 text-xs text-white/80">
                 Last Updated: 24/11/2026
-              </p>
+              </p> */}
             </div>
           </div>
 
@@ -56,14 +56,14 @@ export default function RefundPolicyPage() {
               </Link>
             </div>
 
-              <p>
+              {/* <p>
                 <strong className="text-[#24151a]">Product Name:</strong>{" "}
                 Kanchipuram Jobs (A Portal of{" "}
                 <strong className="text-[#24151a]">
                   Siva Sakthi Staffing Solutions
                 </strong>
                 )
-              </p>
+              </p> */}
 
               <p>
                 <strong className="text-[#24151a]">Applicable To:</strong>{" "}

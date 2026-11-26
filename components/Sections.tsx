@@ -297,21 +297,21 @@ export function Testimonials() {
         "I wish for everyone to benefit and prosper by using this application, which has been specially designed for the people of Kanchipuram.",
       author: "Sri Kamatchi",
       role: "CEO",
-      initial: "K",
+      initial: "S",
     },
     {
       quote:
         "Hello, Kanchipuram! This application is very helpful for finding full-time, part-time, or work-from-home opportunities tailored to each person's individual circumstances. Best wishes!",
       author: "Viji Parthiban",
       role: "Homemaker",
-      initial: "S",
+      initial: "V",
     },
     {
       quote:
         "Labour shortages are widespread in the food industry, making it very difficult to find local staff. For me and my company—who have long wished for a platform like this Kanchipuram Jobs has proven to be a tremendous help. Kudos to the team behind its design!",
       author: "Jesuraj",
       role: "F&B Manager",
-      initial: "S",
+      initial: "J",
     },
     {
       quote:
@@ -325,7 +325,7 @@ export function Testimonials() {
         "I warmly welcome this application, as it directly addresses labour shortages-one of the biggest challenges faced by small and micro-business owners.",
       author: "Anbil Periyavan",
       role: "Managing Director",
-      initial: "V",
+      initial: "A",
     },
     {
       quote:

@@ -46,17 +46,17 @@ export default function TermsAndConditionsPage() {
                 Terms &amp; Conditions
               </h1>
 
-              <p className="mt-3 text-sm text-[#766970]">
+              {/* <p className="mt-3 text-sm text-[#766970]">
                 Effective Date: November 24, 2026
-              </p>
+              </p> */}
 
               <div className="mt-10 space-y-7 text-[15px] leading-8 text-[#5e555a]">
-                <p>
+                {/* <p>
                   <strong className="text-[#24151a]">
                     Product:
                   </strong>{" "}
                   Kanchipuram Jobs (A Portal of Siva Sakthi Staffing Solutions).
-                </p>
+                </p> */}
 
                 <p>
                   Welcome to <strong>Kanchipuram Jobs</strong>, a mobile
