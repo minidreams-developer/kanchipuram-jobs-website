@@ -71,7 +71,7 @@ export default function RefundPolicyPage() {
                 (&quot;Users&quot; or &quot;Recruiters&quot;)
               </p>
 
-              <p>
+              {/* <p>
                 All paid recruitment plans, job posting credits, candidate
                 database subscriptions, and staffing services offered on{" "}
                 <strong className="text-[#24151a]">Kanchipuram Jobs</strong>{" "}
@@ -85,7 +85,7 @@ export default function RefundPolicyPage() {
                 </strong>
                 . By purchasing a plan or service on Kanchipuram Jobs, you
                 agree to the terms of this Refund & Cancellation Policy.
-              </p>
+              </p> */}
 
               {/* Section 1 */}
               <section>

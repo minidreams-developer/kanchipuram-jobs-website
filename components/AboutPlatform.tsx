@@ -146,7 +146,7 @@ export default function AboutPlatform({ aboutUrl }: { aboutUrl: string }) {
           <p className="mb-5 text-[20px] font-extrabold tracking-[2px] text-[#9d536c]">
             ABOUT KANCHIPURAM JOBS
           </p>
-          <h2 className="text-4xl font-bold leading-none tracking-[-2px] text-[#24151a] sm:text-5xl">
+          <h2 className="text-4xl font-bold leading-none tracking-[-2px] text-teal-700 sm:text-5xl">
             Connecting people
             <br />
             with{" "}

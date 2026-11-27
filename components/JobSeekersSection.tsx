@@ -67,7 +67,7 @@ export default function JobSeekersSection() {
           </p>
           <h2
             id="job-seekers-heading"
-            className="text-4xl font-bold leading-[1.05] tracking-[-2px] text-[#24151a] sm:text-5xl"
+            className="text-4xl font-bold leading-[1.05] tracking-[-2px] text-teal-700 sm:text-5xl"
           >
             Find work that moves{" "}
             <em className="font-normal text-[#ac1e44]">you forward.</em>

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -28,8 +27,7 @@ export default function Navbar() {
   const isInnerPage = pathname !== "/";
 
   const homeLink = pathname === "/" ? "#top" : "/";
-  const sectionLink = (id: string) =>
-    pathname === "/" ? `#${id}` : `/#${id}`;
+  const sectionLink = (id: string) => (pathname === "/" ? `#${id}` : `/#${id}`);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,11 +45,9 @@ export default function Navbar() {
 
       const current = sections.reduce<HTMLElement | undefined>(
         (latest, section) => {
-          return section.getBoundingClientRect().top <= 130
-            ? section
-            : latest;
+          return section.getBoundingClientRect().top <= 130 ? section : latest;
         },
-        undefined
+        undefined,
       );
 
       if (current) {
@@ -74,9 +70,7 @@ export default function Navbar() {
     };
   }, [menuOpen, contactOpen]);
 
-  const handleNavClick = (
-    event: React.MouseEvent<HTMLAnchorElement>
-  ) => {
+  const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     const href = event.currentTarget.getAttribute("href");
 
     if (!href) return;
@@ -87,9 +81,7 @@ export default function Navbar() {
         ? href.slice(1)
         : "";
 
-    const target = targetId
-      ? document.getElementById(targetId)
-      : null;
+    const target = targetId ? document.getElementById(targetId) : null;
 
     if (!target) return;
 
@@ -137,27 +129,30 @@ export default function Navbar() {
       }`}
     >
       <div
-        className={`mx-auto flex w-[calc(100%-2rem)] max-w-[1160px] items-center justify-between transition-all duration-300 sm:w-[calc(100%-4.5rem)] ${
+        className={`mx-auto grid w-[calc(100%-8rem)] max-w-[1760px] grid-cols-[1fr_auto_1fr] items-center transition-all duration-300 ${
           scrolled || isInnerPage ? "h-[72px]" : "h-[86px]"
         }`}
       >
         {/* Logo */}
         <a
-          className="flex shrink-0 items-center gap-2.5 text-[18px] font-bold"
+          className="flex items-center justify-self-start"
           href={homeLink}
           onClick={() => setMenuOpen(false)}
         >
-          <Image src={logo} alt="Kanchipuram Jobs" width={230} height={72} className="h-[58px] w-[200px] object-contain px-1 py-1 sm:h-[64px] sm:w-[225px]" priority />
-
-          {/* <Image src={logo} alt="Kanchipuram Jobs" width={220} height={72} className="h-[60px] w-[180px] object-contain px-1 py-1 sm:h-[58px] sm:w-[200px]" priority /> */}
+          <Image
+            src={logo}
+            alt="Kanchipuram Jobs"
+            width={250}
+            height={80}
+            className="h-[65px] w-[230px] object-contain"
+            priority
+          />
         </a>
 
         {/* Desktop Navigation */}
         <div
-          className={`hidden items-center gap-7 text-[16px] font-semibold lg:flex ${
-            scrolled || isInnerPage
-              ? "text-[#815566]"
-              : "text-white"
+          className={`hidden items-center justify-center gap-8 whitespace-nowrap text-[16px] font-semibold lg:flex ${
+            scrolled || isInnerPage ? "text-[#815566]" : "text-white"
           }`}
         >
           {navigationItems.map(({ label, id, icon: Icon }) => (
@@ -165,7 +160,7 @@ export default function Navbar() {
               key={id}
               onClick={handleNavClick}
               href={sectionLink(id)}
-              className={`inline-flex items-center gap-2 border-b-2 py-2 transition-all duration-200 hover:-translate-y-0.5 hover:text-[#ac1e44] ${
+              className={`inline-flex items-center gap-2 whitespace-nowrap border-b-2 py-2 transition-all duration-200 hover:-translate-y-0.5 hover:text-[#ac1e44] ${
                 activeSection === id
                   ? "border-[#ac1e44] text-[#ac1e44]"
                   : "border-transparent"
@@ -175,19 +170,24 @@ export default function Navbar() {
               {label}
             </a>
           ))}
+
+          {/* Contact */}
+          <button
+            type="button"
+            onClick={openContact}
+            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap border-b-2 border-transparent py-2 transition hover:-translate-y-0.5 hover:border-[#ac1e44] hover:text-[#ac1e44]"
+          >
+            <FiMail size={18} aria-hidden="true" />
+            Contact
+          </button>
         </div>
 
-        <button type="button" onClick={openContact} className={`hidden items-center gap-2 border-b-2 border-transparent py-2 text-[16px] font-semibold transition hover:-translate-y-0.5 hover:border-[#ac1e44] hover:text-[#ac1e44] lg:inline-flex ${scrolled || isInnerPage ? "text-[#815566]" : "text-white"}`}>
-          <FiMail size={18} aria-hidden="true" />
-          Contact
-        </button>
-
-        {/* Download App Button */}
+        {/* Download App Button */} 
         <a
-          className="hidden items-center rounded-lg bg-[#ac1e44] px-5 py-3.5 text-[15px] font-bold text-white transition hover:bg-[#891735] lg:inline-flex"
+          className="hidden shrink-0 items-center justify-self-end rounded-lg bg-[#ac1e44] px-6 py-3.5 text-[15px] font-bold text-white transition hover:bg-[#891735] lg:inline-flex"
           href={sectionLink("jobseeker")}
         >
-          <span className="inline-flex items-center gap-2">
+          <span className="inline-flex items-center gap-2 whitespace-nowrap">
             Download App
             <FiArrowUpRight size={18} aria-hidden="true" />
           </span>
@@ -197,9 +197,7 @@ export default function Navbar() {
         <button
           type="button"
           aria-label={
-            menuOpen
-              ? "Close navigation menu"
-              : "Open navigation menu"
+            menuOpen ? "Close navigation menu" : "Open navigation menu"
           }
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
@@ -237,22 +235,22 @@ export default function Navbar() {
                 }}
                 className="flex items-center gap-3 rounded-2xl px-3 py-4 text-[15px] font-semibold transition-colors hover:bg-[#fff1f5]"
               >
-                <Icon
-                  size={19}
-                  aria-hidden="true"
-                  className="text-[#ac1e44]"
-                />
+                <Icon size={19} aria-hidden="true" className="text-[#ac1e44]" />
 
                 {label}
 
-                <FiArrowUpRight
-                  size={17}
-                  className="ml-auto text-[#b06a80]"
-                />
+                <FiArrowUpRight size={17} className="ml-auto text-[#b06a80]" />
               </a>
             ))}
 
-            <button type="button" onClick={openContact} className="flex w-full items-center gap-3 rounded-2xl px-3 py-4 text-left text-[15px] font-semibold transition-colors hover:bg-[#fff1f5]"><FiMail size={19} className="text-[#ac1e44]" /> Contact <FiArrowUpRight size={17} className="ml-auto text-[#b06a80]" /></button>
+            <button
+              type="button"
+              onClick={openContact}
+              className="flex w-full items-center gap-3 rounded-2xl px-3 py-4 text-left text-[15px] font-semibold transition-colors hover:bg-[#fff1f5]"
+            >
+              <FiMail size={19} className="text-[#ac1e44]" /> Contact{" "}
+              <FiArrowUpRight size={17} className="ml-auto text-[#b06a80]" />
+            </button>
 
             {/* Policy Links */}
             <div className="mt-3 border-t border-[#f0e2e6] pt-3">

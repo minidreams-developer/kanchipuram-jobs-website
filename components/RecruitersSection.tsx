@@ -52,7 +52,7 @@ export default function RecruitersSection() {
           </p>
           <h2
             id="recruiters-heading"
-            className="text-4xl font-bold leading-[1.05] tracking-[-2px] text-[#24151a] sm:text-5xl"
+            className="text-4xl font-bold leading-[1.05] tracking-[-2px] text-teal-700 sm:text-5xl"
           >
             Find the people who make{" "}
             <em className="font-normal text-[#ac1e44]">things happen.</em>

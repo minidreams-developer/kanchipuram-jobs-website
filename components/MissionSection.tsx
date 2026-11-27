@@ -52,7 +52,7 @@ export default function MissionSection() {
       <div className="mx-auto grid max-w-[1160px] items-center gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
         <motion.div initial={{ opacity: 0, x: -45 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
           <p className="mb-5 text-[20px] font-extrabold tracking-[2px] text-[#9d536c]">OUR MISSION</p>
-          <h2 className="text-4xl font-bold leading-[1.05] tracking-[-2px] text-[#24151a] sm:text-5xl">Making local work <em className="font-normal text-[#ac1e44]">easier to find.</em></h2>
+          <h2 className="text-4xl font-bold leading-[1.05] tracking-[-2px] text-teal-700 sm:text-5xl">Making local work <em className="font-normal text-[#ac1e44]">easier to find.</em></h2>
           <p className="mt-7 max-w-[520px] text-[15px] leading-8 text-[#68636a]">We make meaningful employment easier to discover by bringing verified recruiters and local talent together through a simple, transparent platform.</p>
           <p className="mt-5 max-w-[520px] text-[15px] leading-8 text-[#68636a]">From finding the right opportunity to tracking an application, Kanchipuram Jobs helps people take their next career step with confidence.</p>
         </motion.div>

@@ -144,7 +144,7 @@ export function HowItWorks() {
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.8, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="mb-7 text-4xl leading-none tracking-[-1.5px] text-[#151515]">
+          <h2 className="mb-7 text-4xl leading-none tracking-[-1.5px] text-teal-700">
             How it works
           </h2>
           <p className="mb-10 max-w-[520px] text-sm leading-[1.45] text-[#765361]">

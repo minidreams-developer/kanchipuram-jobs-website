@@ -23,37 +23,49 @@ const faqs = [
   {
     question: "What is Kanchipuram Jobs?",
     answer:
-      "Kanchipuram Jobs is a dedicated local recruitment platform connecting job seekers across Kanchipuram district, including nearby towns, panchayats, and villages, with local businesses. Our mission is to make hiring easier and help the entire community grow together.",
+      "Kanchipuram Jobs is a dedicated local recruitment platform created for Kanchipuram and its surrounding towns, panchayats, and villages. Our goal is to connect youth across the Kanchipuram district with meaningful employment opportunities so the entire community can grow together. At the same time, we help local entrepreneurs and businesses find skilled, reliable talent to overcome workforce shortages.",
   },
   {
     question: "How do I apply for a job?",
     answer:
-      "Simply download the Kanchipuram Jobs app from the Google Play Store, create your profile, browse available job openings that match your skills and qualifications, and apply directly.",
+      "Getting started is simple: download the Kanchipuram Jobs app from the Google Play Store just like any other app, browse openings that match your qualifications and skills, and apply directly. We wish you every success as you take the next step in your career and personal growth.",
   },
   {
-    question: "Is Kanchipuram Jobs free for job seekers?",
+    question: "How can Kanchipuram Jobs help entrepreneurs?",
     answer:
-      "Kanchipuram Jobs is completely free for candidates. We do not charge job seekers any registration fees, application fees, or other charges to explore opportunities and apply for jobs.",
+      "Traditional hiring methods often fall short in today's fast-paced, mobile-first world. Instead of simply filling seats with mismatched or under-skilled applicants, Kanchipuram Jobs helps you connect with qualified, local talent suited to your business needs—so you can build a stronger team and grow sustainably year after year. Wishing your business continued prosperity and success!",
   },
   {
-    question: "How can Kanchipuram Jobs help local businesses?",
+    question: "How can Kanchipuram Jobs help candidates?",
     answer:
-      "We help entrepreneurs and local businesses connect with skilled and reliable candidates from nearby areas, making hiring easier and helping businesses build stronger teams.",
+      "If you feel stuck in a role that doesn't match your skills, qualifications, or long-term goals, Kanchipuram Jobs helps you find work that fits your strengths and pays well so you can move forward with confidence. We are committed to helping you build a better livelihood. Best wishes!",
+    points: [
+      {
+        heading: "Free for Job Seekers",
+        description:
+          "Kanchipuram Jobs does not charge candidates to use the app under any circumstances, so you can explore opportunities and apply freely.",
+      },
+    ],
   },
   {
-    question: "Can I find jobs near my hometown?",
+    question: "Why Kanchipuram Jobs?",
     answer:
-      "Yes! Kanchipuram Jobs focuses on opportunities across Kanchipuram district, including its towns, panchayats, and surrounding villages. Our goal is to connect you with relevant jobs closer to home.",
+      "Kanchipuram Jobs was launched to bridge the gap between local job seekers and local business owners in one place—making local hiring faster, more relevant, and more accessible for everyone in the community.",
   },
   {
-    question: "Why should I choose Kanchipuram Jobs?",
-    answer:
-      "We bring local job seekers and employers together in one dedicated platform, making local hiring more accessible, relevant, and convenient for everyone.",
-  },
-  {
-    question: "How does Kanchipuram Jobs solve local hiring problems?",
-    answer:
-      "Our platform reduces app overload and location mismatches by bringing local job opportunities and candidates together in one place.",
+    question: "What problems does the Kanchipuram Jobs app solve?",
+    points: [
+      {
+        heading: "App Overload",
+        description:
+          "Job seekers and business owners often juggle too many scattered platforms and job boards. Kanchipuram Jobs brings local hiring into one focused, easy-to-use space.",
+      },
+      {
+        heading: "Location Mismatch",
+        description:
+          "General job boards often bring in distant or irrelevant applicants—such as calls from far outside the state for a local Kanchipuram opening. Kanchipuram Jobs focuses specifically on local talent and nearby opportunities, giving residents a dedicated way to find work close to home.",
+      },
+    ],
   },
 ];
 
@@ -81,6 +93,8 @@ const revealAnimation = {
    STATS SECTION
 -------------------------------------------------- */
 
+
+
 export function Stats() {
   const [publicStats, setPublicStats] = useState<{
     users: number;
@@ -88,30 +102,89 @@ export function Stats() {
     jobs: number;
   } | null>(null);
 
+  const [animatedStats, setAnimatedStats] = useState({
+    users: 0,
+    recruiters: 0,
+    jobs: 0,
+  });
+
+  // Fetch API statistics
   useEffect(() => {
     const loadPublicStats = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/admin-dashboard/public-stats`,
+          `${process.env.NEXT_PUBLIC_API_URL}/admin-dashboard/public-stats`
         );
+
         if (!response.ok) return;
+
         const data = await response.json();
-        setPublicStats(data);
-      } catch {
-        // Keep the stats placeholders when the public API is unavailable.
+
+        setPublicStats({
+          users: Number(data.users) || 0,
+          recruiters: Number(data.recruiters) || 0,
+          jobs: Number(data.jobs) || 0,
+        });
+      } catch (error) {
+        console.error("Failed to load public stats:", error);
       }
     };
 
     loadPublicStats();
   }, []);
 
-  const formatStat = (value: number | undefined) =>
-    value === undefined ? "—" : value.toLocaleString("en-IN");
+  // Animate numbers when API data arrives
+  useEffect(() => {
+    if (!publicStats) return;
+
+    const duration = 2000;
+    let animationFrame: number;
+    let startTime: number | null = null;
+
+    const animate = (currentTime: number) => {
+      if (startTime === null) startTime = currentTime;
+
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Smooth ease-out animation
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+      setAnimatedStats({
+        users: Math.floor(publicStats.users * easedProgress),
+        recruiters: Math.floor(publicStats.recruiters * easedProgress),
+        jobs: Math.floor(publicStats.jobs * easedProgress),
+      });
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [publicStats]);
+
+  const formatStat = (value: number) =>
+    value.toLocaleString("en-IN");
 
   const statistics = [
-    [formatStat(publicStats?.recruiters), "Recruiters", ""],
-    [formatStat(publicStats?.users), "Job seekers", ""],
-    [formatStat(publicStats?.jobs), "Jobs posted", ""],
+    [
+      publicStats ? formatStat(animatedStats.recruiters) : "—",
+      "Recruiters",
+      "",
+    ],
+    [
+      publicStats ? formatStat(animatedStats.users) : "—",
+      "Job seekers",
+      "",
+    ],
+    [
+      publicStats ? formatStat(animatedStats.jobs) : "—",
+      "Jobs posted",
+      "",
+    ],
     ["4.9", "Community rating", "/5"],
   ];
 
@@ -120,9 +193,14 @@ export function Stats() {
       <div className={`${wrap} grid grid-cols-2 gap-7 md:grid-cols-4`}>
         {statistics.map(([number, label, suffix]) => (
           <div key={label} className="text-center">
-            <strong className="text-3xl font-bold sm:text-[32px]">
+            <strong
+              className="text-3xl font-bold tabular-nums sm:text-[32px]"
+              aria-live="off"
+            >
               {number}
-              <span className="text-lg text-[#f3c3d0]">{suffix}</span>
+              <span className="text-lg text-[#f3c3d0]">
+                {suffix}
+              </span>
             </strong>
 
             <small className="mt-1 block text-xs text-[#f1c7d3] sm:text-sm">
@@ -347,7 +425,7 @@ export function Testimonials() {
             OUR COMMUNITY SAYS
           </p>
 
-          <h2 className={heading}>
+          <h2 className="text-4xl leading-tight tracking-[-2px] text-teal-700 sm:text-5xl sm:leading-none sm:tracking-[-3px]">
             Small steps.
             <br />
             <em className="font-normal text-[#ac1e44]">Big possibilities.</em>
@@ -364,8 +442,6 @@ export function Testimonials() {
       <div className="testimonial-slider group relative w-full overflow-hidden">
         {/* Left and Right Fade Effects */}
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-[#f8e7ec] to-transparent sm:w-28" />
-
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[#f8e7ec] to-transparent sm:w-28" />
 
         <div className="testimonial-track flex w-max">
           {scrollingTestimonials.map((testimonial, index) => (
@@ -390,7 +466,7 @@ export function Testimonials() {
               </div>
 
               {/* Testimonial Quote */}
-              <p className="h-[190px] overflow-y-auto text-[15px] leading-7 text-[#765361]">
+              <p className="h-[190px] overflow-y-auto text-[14px] font-bold leading-7 text-[#765361]">
                 “{testimonial.quote}”
               </p>
 
@@ -464,10 +540,17 @@ export function FaqSection() {
           HAVE QUESTIONS?
         </p>
 
-        <h2 className={heading}>
+        <h2 className="text-4xl leading-tight tracking-[-2px] text-teal-700 sm:text-5xl sm:leading-none sm:tracking-[-3px]">
           Good
           <em className="font-normal text-[#ac1e44]"> to know.</em>
         </h2>
+        <div className="mt-8 flex h-[300px] w-full max-w-[420px] items-center justify-center">
+          <img
+            src="./FAQ.png"
+            alt="Frequently asked questions"
+            className="h-full w-full object-contain object-center"
+          />
+        </div>
       </div>
 
       <div className="border-t border-[#dfb9c5]">
@@ -484,9 +567,21 @@ export function FaqSection() {
               </span>
             </summary>
 
-            <p className="mt-4 max-w-[450px] text-sm font-normal leading-7 text-[#896575]">
-              {faq.answer}
-            </p>
+            <div className="mt-4 max-w-[450px] space-y-5 text-sm leading-7 text-[#896575]">
+              {/* Normal Answer */}
+              {faq.answer && <p className="font-normal">{faq.answer}</p>}
+
+              {/* Highlighted Sections */}
+              {faq.points?.map((point) => (
+                <div key={point.heading}>
+                  <h4 className="mb-1 font-bold text-[#ac1e44]">
+                    {point.heading}
+                  </h4>
+
+                  <p className="font-normal">{point.description}</p>
+                </div>
+              ))}
+            </div>
           </details>
         ))}
       </div>

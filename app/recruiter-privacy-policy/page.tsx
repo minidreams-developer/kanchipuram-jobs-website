@@ -70,7 +70,7 @@ export default function RecruiterPolicyPage() {
                 </p>
               </div>
 
-              <p>
+              {/* <p>
                 Welcome to <strong>Kanchipuram Jobs</strong>, a mobile
                 application and web recruitment platform owned and operated
                 by <strong>Siva Sakthi Staffing Solutions</strong>. By
@@ -79,7 +79,7 @@ export default function RecruiterPolicyPage() {
                 Jobs, you enter into an electronic agreement with
                 Kanchipuram Jobs and accept these Recruiter &amp; Employer
                 Terms, Usage Policy, and Privacy Policy.
-              </p>
+              </p> */}
 
               {/* TERMS AND USAGE POLICY */}
               <section>

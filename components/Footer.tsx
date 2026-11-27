@@ -21,9 +21,10 @@ export default function Footer() {
         </div>
         <div>
           <small className="mb-2 block text-sm text-[#f1c7d3]">
-            Built for the district
+            Built for 
           </small>
-          <span className="text-base">Kanchipuram, Tamil Nadu</span>
+          <span className="text-base">Kanchipuram district
+            <br/> Tamil Nadu</span>
         </div>
       </div>
       <div className="mx-auto flex w-[calc(100%-2rem)] max-w-[1160px] flex-col justify-between gap-4 pt-[18px] text-xs text-[#f0becd] sm:w-[calc(100%-4.5rem)] md:flex-row">

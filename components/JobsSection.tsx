@@ -8,7 +8,7 @@ const categories = ["Construction & Architecture", "Education & Training", "Sale
 const categoryIcons = [FiHome, FiBookOpen, FiTrendingUp, FiHeart];
 const categoryImages = ["/career-construction.png", "/career-education.png", "/career-sales.png", "/career-healthcare.png"];
 const wrap = "mx-auto w-[calc(100%-2rem)] max-w-[1160px] sm:w-[calc(100%-4.5rem)]";
-const heading = "text-5xl leading-none tracking-[-3px] text-[#24151a]";
+const heading = "text-5xl leading-none tracking-[-3px] text-teal-700";
 
 export default function JobsSection() {
   return (

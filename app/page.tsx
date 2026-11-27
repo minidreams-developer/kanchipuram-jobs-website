@@ -22,8 +22,11 @@ export default function Home() {
           <Hero />
         </MotionReveal>
       </div>
+      <MotionReveal>
+        <Stats />
+      </MotionReveal>
+      
 
-      <Stats />
       <div id="AboutPlatform" className="scroll-mt-24">
         <MotionReveal>
           <AboutPlatform aboutUrl="#about" />

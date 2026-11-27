@@ -58,7 +58,7 @@ export default function TermsAndConditionsPage() {
                   Kanchipuram Jobs (A Portal of Siva Sakthi Staffing Solutions).
                 </p> */}
 
-                <p>
+                {/* <p>
                   Welcome to <strong>Kanchipuram Jobs</strong>, a mobile
                   application and recruitment portal owned and operated by{" "}
                   <strong>Siva Sakthi Staffing Solutions</strong>. These
@@ -67,7 +67,7 @@ export default function TermsAndConditionsPage() {
                   registering on, or using the Kanchipuram Jobs app, you
                   accept these Terms, our Privacy Policy, and your respective
                   role-based Usage Policy.
-                </p>
+                </p> */}
 
                 {/* 1. Eligibility */}
                 <section>
