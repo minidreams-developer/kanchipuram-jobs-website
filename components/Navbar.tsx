@@ -129,13 +129,13 @@ export default function Navbar() {
       }`}
     >
       <div
-        className={`mx-auto grid w-[calc(100%-8rem)] max-w-[1760px] grid-cols-[1fr_auto_1fr] items-center transition-all duration-300 ${
+        className={`mx-auto grid w-full max-w-[1760px] grid-cols-[1fr_auto] items-center px-4 transition-all duration-300 sm:px-6 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:px-16 ${
           scrolled || isInnerPage ? "h-[72px]" : "h-[86px]"
         }`}
       >
         {/* Logo */}
         <a
-          className="flex items-center justify-self-start"
+          className="flex shrink-0 items-center justify-self-start -ml-7 sm:-ml-4 lg:ml-0"
           href={homeLink}
           onClick={() => setMenuOpen(false)}
         >
@@ -144,7 +144,11 @@ export default function Navbar() {
             alt="Kanchipuram Jobs"
             width={250}
             height={80}
-            className="h-[65px] w-[230px] object-contain"
+            className={`object-contain transition-all duration-300 ${
+              scrolled || isInnerPage
+                ? "h-[48px] w-[175px] lg:h-[48px] lg:w-[180px]"
+                : "h-[52px] w-[190px] sm:h-[60px] sm:w-[210px] lg:h-[65px] lg:w-[230px]"
+            }`}
             priority
           />
         </a>
@@ -182,7 +186,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Download App Button */} 
+        {/* Download App Button */}
         <a
           className="hidden shrink-0 items-center justify-self-end rounded-lg bg-[#ac1e44] px-6 py-3.5 text-[15px] font-bold text-white transition hover:bg-[#891735] lg:inline-flex"
           href={sectionLink("jobseeker")}
@@ -201,7 +205,7 @@ export default function Navbar() {
           }
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
-          className={`grid h-11 w-11 place-items-center rounded-xl border lg:hidden ${
+          className={`relative z-[53] grid h-11 w-11 shrink-0 place-items-center rounded-xl border lg:hidden ${
             scrolled || isInnerPage
               ? "border-[#ead9de] bg-white text-[#ac1e44]"
               : "border-white/30 bg-black/20 text-white"
@@ -212,15 +216,19 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Navigation */}
+
+      {/* Mobile Navigation */}
       {menuOpen && (
         <>
+          {/* Full Screen Dark Overlay */}
           <button
             aria-label="Close navigation menu"
-            className="fixed inset-0 top-[68px] bg-[#24151a]/35 lg:hidden"
+            className="fixed inset-0 z-[51] bg-black/60 lg:hidden"
             onClick={() => setMenuOpen(false)}
           />
 
-          <div className="absolute right-4 top-[76px] w-[min(88vw,350px)] rounded-3xl border border-[#ead9de] bg-white p-4 text-[#24151a] shadow-[0_20px_50px_rgba(36,21,26,0.2)] lg:hidden">
+          {/* Centered Navigation Container */}
+          <div className="fixed left-1/2 top-1/2 z-[52] w-[min(88vw,350px)] max-h-[calc(100dvh-2rem)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-3xl border border-[#ead9de] bg-white p-4 text-[#24151a] shadow-[0_20px_50px_rgba(36,21,26,0.3)] lg:hidden">
             <div className="mb-3 px-3 py-3 text-[11px] font-extrabold tracking-[2px] text-[#9d536c]">
               KANCHIPURAM JOBS
             </div>
@@ -248,7 +256,8 @@ export default function Navbar() {
               onClick={openContact}
               className="flex w-full items-center gap-3 rounded-2xl px-3 py-4 text-left text-[15px] font-semibold transition-colors hover:bg-[#fff1f5]"
             >
-              <FiMail size={19} className="text-[#ac1e44]" /> Contact{" "}
+              <FiMail size={19} className="text-[#ac1e44]" />
+              Contact
               <FiArrowUpRight size={17} className="ml-auto text-[#b06a80]" />
             </button>
 
@@ -289,6 +298,7 @@ export default function Navbar() {
           </div>
         </>
       )}
+
       <ContactForm open={contactOpen} onClose={() => setContactOpen(false)} />
     </nav>
   );
